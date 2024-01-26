@@ -1,9 +1,9 @@
 ## Interface: 100205
 ## Title: Rhodan's Graphical Settings
-## Notes: Dynamic graphical settings based on certain conditions.
+## Notes: Dynamic graphical settings based on certain group conditions.
 ## Author: Rhodan
 ## Version: 0.1
-## IconTexture: Interface/Icons/Wow_store
+## IconTexture: Interface\AddOns\RGS\rhodan.tga
 
 ## SavedVariables: RGSDB
 
@@ -30,3 +30,4 @@ Libs/AceBucket-3.0/AceBucket-3.0.xml
 Core.lua
 Config.lua
 Events.lua
+RGSMinimap.lua
