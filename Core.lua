@@ -1,9 +1,14 @@
 --[[ 
 
 Core.lua
+Handles bulk of code to load settings from current (via button) and apply specific settings to graphics on specific group-size events
 
 ]]
 
+
+---------------------------
+-- 1. Global Declarations
+---------------------------
 
 local AceAddon = LibStub("AceAddon-3.0")
 local RGS = AceAddon:NewAddon("RGS", "AceConsole-3.0", "AceEvent-3.0")
@@ -14,29 +19,11 @@ local ACD = LibStub("AceConfigDialog-3.0")
 local ADBO = LibStub("AceDBOptions-3.0") -- If you're using AceDBOptions-3.0
 
 RGS = RGS or {}
-		
 
--- Function that will push current graphic settings into specific profile
-function RGS:UpdateProfileWithCurrentSettings(profileType)
-    local profile = self.db.profile[profileType]
-    if not profile then return end
 
-    profile.shadowQuality = tonumber(GetCVar("graphicsShadowQuality"))
-    profile.liquidDetail = tonumber(GetCVar("graphicsLiquidDetail"))
-    profile.particleDensity = tonumber(GetCVar("graphicsParticleDensity"))
-    profile.SSAOSetting = tonumber(GetCVar("graphicsSSAO"))
-    profile.depthEffects = tonumber(GetCVar("graphicsDepthEffects"))
-    profile.computeEffects = tonumber(GetCVar("graphicsComputeEffects"))
-    profile.textureResolution = tonumber(GetCVar("graphicsTextureResolution"))
-    profile.spellDensity = tonumber(GetCVar("graphicsSpellDensity"))
-    profile.projectedTextures = tonumber(GetCVar("graphicsProjectedTextures"))
-    profile.viewDistance = tonumber(GetCVar("graphicsViewDistance"))
-    profile.environmentDetail = tonumber(GetCVar("graphicsEnvironmentDetail"))
-    profile.groundClutter = tonumber(GetCVar("graphicsGroundClutter"))
-
-    print(profileType .. " profile updated with current settings.")
-end
-
+---------------------------
+-- 2. Initialization
+---------------------------
 
 -- Function called when addon is loaded
 function RGS:OnInitialize()
@@ -127,6 +114,39 @@ function RGS:OnInitialize()
         self.profilesFrame = ACD:AddToBlizOptions("Rhodan's Graphical Settings - Profiles", "Profiles", "Rhodan's Graphical Settings")
     end
 end
+
+
+
+---------------------------
+-- 3. Buttons
+---------------------------
+
+-- Function that will push current graphic settings into specific profile
+function RGS:UpdateProfileWithCurrentSettings(profileType)
+    local profile = self.db.profile[profileType]
+    if not profile then return end
+
+    profile.shadowQuality = tonumber(GetCVar("graphicsShadowQuality"))
+    profile.liquidDetail = tonumber(GetCVar("graphicsLiquidDetail"))
+    profile.particleDensity = tonumber(GetCVar("graphicsParticleDensity"))
+    profile.SSAOSetting = tonumber(GetCVar("graphicsSSAO"))
+    profile.depthEffects = tonumber(GetCVar("graphicsDepthEffects"))
+    profile.computeEffects = tonumber(GetCVar("graphicsComputeEffects"))
+    profile.textureResolution = tonumber(GetCVar("graphicsTextureResolution"))
+    profile.spellDensity = tonumber(GetCVar("graphicsSpellDensity"))
+    profile.projectedTextures = tonumber(GetCVar("graphicsProjectedTextures"))
+    profile.viewDistance = tonumber(GetCVar("graphicsViewDistance"))
+    profile.environmentDetail = tonumber(GetCVar("graphicsEnvironmentDetail"))
+    profile.groundClutter = tonumber(GetCVar("graphicsGroundClutter"))
+
+    print(profileType .. " profile updated with current settings.")
+end
+
+
+
+-----------------------------------
+-- 4. Functions to Apply Settings
+-----------------------------------
 
 
 -- This function applies a given profile's settings to the game.

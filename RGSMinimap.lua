@@ -1,14 +1,24 @@
 --[[ 
 
--- RGSMinimap.lua
+RGSMinimap.lua
+Code for the creation of broker, minimap, icons, textures and click events
 
 ]]
+
+
+---------------------------
+-- 1. Declarations
+---------------------------
 
 RGS = RGS or {}  -- Initialize the RGS table if it's not already initialized
 
 -- Assuming RGS is your main addon table
 local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
 
+
+---------------------------
+-- 2. Data Broker
+---------------------------
 
 -- Create a Data Broker object
 RGS.dataBroker = ldb:NewDataObject("RGS", {
@@ -28,6 +38,10 @@ RGS.dataBroker = ldb:NewDataObject("RGS", {
     end,
 })
 
+
+---------------------------
+-- 3. Minimap Button
+---------------------------
 
 -- Create the minimap button frame
 RGS.MinimapButton = CreateFrame("Button", "MyMinimapButton", Minimap)

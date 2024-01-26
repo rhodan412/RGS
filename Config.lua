@@ -4,11 +4,21 @@ Config.lua
 
 ]]
 
+
+---------------------------
+-- 1. Declarations
+---------------------------
+
 local AceConfig = LibStub("AceConfig-3.0")
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 local RGS = LibStub("AceAddon-3.0"):GetAddon("RGS")
 
 RGS = RGS or {}
+
+
+---------------------------
+-- 2. Options Table
+---------------------------
 
 -- Inside your options table
 RGS.options = {
@@ -713,6 +723,10 @@ RGS.options = {
     },
 }
 
+
+---------------------------
+-- 3. Setup Functions
+---------------------------
 
 function RGS:SetupOptions()
     AceConfig:RegisterOptionsTable("RGS", options)

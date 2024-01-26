@@ -4,9 +4,20 @@ Events.lua
 
 ]]
 
+
+---------------------------
+-- 1. Declarations
+---------------------------
+
 local RGS = LibStub("AceAddon-3.0"):GetAddon("RGS")
 
 RGS = RGS or {}
+
+
+
+---------------------------
+-- 2. Register Events
+---------------------------
 
 -- Create an event frame
 local Frame = CreateFrame("Frame")
@@ -38,6 +49,11 @@ local function HandleEvents(frame, event, ...)
 end
 
 
+
+---------------------------
+-- 3. Event Functions
+---------------------------
+
 -- Handling PLAYER_LOGIN Event
 function RGS.handlePlayerLogin()
 	-- Initialize other components of your AddOn
@@ -67,6 +83,12 @@ function RGS.handlePlayerEntersWorld()
     end
 	RGS.handleGroupRosterUpdate()
 end
+
+
+
+---------------------------
+-- 4. Finalization
+---------------------------
 
 -- Set the event handler
 Frame:SetScript("OnEvent", HandleEvents)
