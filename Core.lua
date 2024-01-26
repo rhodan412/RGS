@@ -15,6 +15,29 @@ local ADBO = LibStub("AceDBOptions-3.0") -- If you're using AceDBOptions-3.0
 
 RGS = RGS or {}
 		
+
+-- Function that will push current graphic settings into specific profile
+function RGS:UpdateProfileWithCurrentSettings(profileType)
+    local profile = self.db.profile[profileType]
+    if not profile then return end
+
+    profile.shadowQuality = tonumber(GetCVar("graphicsShadowQuality"))
+    profile.liquidDetail = tonumber(GetCVar("graphicsLiquidDetail"))
+    profile.particleDensity = tonumber(GetCVar("graphicsParticleDensity"))
+    profile.SSAOSetting = tonumber(GetCVar("graphicsSSAO"))
+    profile.depthEffects = tonumber(GetCVar("graphicsDepthEffects"))
+    profile.computeEffects = tonumber(GetCVar("graphicsComputeEffects"))
+    profile.textureResolution = tonumber(GetCVar("graphicsTextureResolution"))
+    profile.spellDensity = tonumber(GetCVar("graphicsSpellDensity"))
+    profile.projectedTextures = tonumber(GetCVar("graphicsProjectedTextures"))
+    profile.viewDistance = tonumber(GetCVar("graphicsViewDistance"))
+    profile.environmentDetail = tonumber(GetCVar("graphicsEnvironmentDetail"))
+    profile.groundClutter = tonumber(GetCVar("graphicsGroundClutter"))
+
+    print(profileType .. " profile updated with current settings.")
+end
+
+
 -- Function called when addon is loaded
 function RGS:OnInitialize()
     -- Query the current graphics settings from CVars
@@ -150,4 +173,3 @@ function RGS:UpdateGraphicsSettingsBasedOnGroupStatus()
         self:ApplyProfileSettings(self.db.profile.raid)
     end
 end
-

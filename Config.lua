@@ -12,13 +12,20 @@ RGS = RGS or {}
 
 -- Inside your options table
 RGS.options = {
-    name = "Rhodan's Graphical Settings",
+    name = "Rhodan's Graphical Automation Settings",
     type = "group",
     args = {
         solo = {
             name = "Solo",
             type = "group",
             args = {
+				updateSettingsButton = {
+					type = "execute",
+					name = "Update Settings",
+					desc = "Update this profile with the current in-game graphics settings.",
+					order = 1,  -- Adjust the order to place the button correctly in the list
+					func = function() RGS:UpdateProfileWithCurrentSettings("solo") end,
+				},
                 shadowQuality = {
                     type = "select",
                     name = "Shadow Quality",
@@ -29,7 +36,7 @@ RGS.options = {
 						   "Fair: Low-resolution environment, close distance unit shadows.\n\n" ..
 						   "Low: Blob shadows.\n\n" ..
 						   "Off: No shadows.",
-					order = 1,
+					order = 2,
 					values = {
 						[5] = "Ultra-High",
 						[4] = "Ultra",
@@ -52,7 +59,7 @@ RGS.options = {
 						   "Good: Normal map liquid textures, and texture-based ripples and sky reflection.\n\n" ..
 						   "Fair: Normal map liquid textures, no reflection, and sky reflection.\n\n" ..
 						   "Low: Animated liquid textures, texture-based ripples, and no reflection.",
-					order = 2,
+					order = 3,
 					values = {
 						[3] = "High",
 						[2] = "Good",
@@ -68,7 +75,7 @@ RGS.options = {
                     type = "select",
                     name = "Particle Density",
 					desc = "Controls the number of particles used in effects caused by spells, fires, etc. Decrease to improve performance.",
-					order = 3,
+					order = 4,
 					values = {
 						[5] = "Ultra",
 						[4] = "High",
@@ -86,7 +93,7 @@ RGS.options = {
                     type = "select",
                     name = "SSAO",
 					desc = "Controls the rendering quality of the advanced lighting effects. Decreasing this may greatly improve performance.",
-					order = 4,
+					order = 5,
 					values = {
 						[4] = "Ultra",
 						[3] = "High",
@@ -107,7 +114,7 @@ RGS.options = {
 						   "Good: Particle depth fading and low-resolution refraction. Depth-based sunshafts and glare.\n\n" ..
 						   "Fair: Particle depth fading and no glare. Traditional sunshafts and refraction.\n\n" ..
 						   "Low: No particle depth fading or glare. Depth-based sunshafts and traditional refraction.",
-					order = 5,
+					order = 6,
 					values = {
 						[3] = "High",
 						[2] = "Good",
@@ -129,7 +136,7 @@ RGS.options = {
 						   "Good: Medium-resolution volume fog.\n\n" ..
 						   "High: High-resolution volume fog.\n\n" ..
 						   "Ultra: Ultra-resolution volume fog with additional placements.",
-					order = 6,
+					order = 7,
 					values = {
 						[4] = "Ultra",
 						[3] = "High",
@@ -149,8 +156,8 @@ RGS.options = {
 						   "High: High-resolution environment textures, high-detail terrain blending, and high-resolution character textures.\n\n" ..
 						   "Fair: Medium-resolution environment textures, low-detail terrain blending, and low-resolution character textures.\n\n" ..
 						   "Low: Low-resolution environment textures, very low-detail terrain blending, and low-resolution character textures.\n\n" ..
-							"|cffff0000Changes to this setting from your base setting will result in momentary lag increase when transitioning to and from that group.|r",
-					order = 7,
+							"|cffff0000Modifying setting from base/current increases momentarily the lag on graphic setting change.|r",
+					order = 8,
 					values = {
 						[2] = "High",
 						[1] = "Fair",
@@ -170,7 +177,7 @@ RGS.options = {
 						   "Half: Reduce non-essential spells shown by around 50%.\n\n" ..
 						   "Most: Reduce non-essential spells shown based on framerate. If you are above your desired framerate, everything will be shown.\n\n" ..
 						   "Everything: Always show all spells.",
-					order = 8,
+					order = 9,
 					values = {
 						[0] = "Essential",
 						[1] = "Some",
@@ -188,7 +195,7 @@ RGS.options = {
                     type = "select",
                     name = "Projected Textures",
 					desc = "Enables the projecting of textures to the environment. Disabling this may improve performance.",
-					order = 9,
+					order = 10,
 					values = {
 						[1] = "Enabled",
 						[0] = "Disabled"
@@ -202,7 +209,7 @@ RGS.options = {
                     type = "range",
                     name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
-					order = 10,
+					order = 11,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -215,7 +222,7 @@ RGS.options = {
                     type = "range",
                     name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
-					order = 11,
+					order = 12,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -228,7 +235,7 @@ RGS.options = {
                     type = "range",
                     name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
-					order = 12,
+					order = 13,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -244,6 +251,13 @@ RGS.options = {
             type = "group",
 			order = 2,
             args = {
+				updateSettingsButton = {
+					type = "execute",
+					name = "Update Settings",
+					desc = "Update this profile with the current in-game graphics settings.",
+					order = 1,  -- Adjust the order to place the button correctly in the list
+					func = function() RGS:UpdateProfileWithCurrentSettings("group") end,
+				},
                 shadowQuality = {
                     type = "select",
                     name = "Shadow Quality",
@@ -254,7 +268,7 @@ RGS.options = {
 						   "Fair: Low-resolution environment, close distance unit shadows.\n\n" ..
 						   "Low: Blob shadows.\n\n" ..
 						   "Off: No shadows.",
-					order = 1,
+					order = 2,
 					values = {
 						[5] = "Ultra-High",
 						[4] = "Ultra",
@@ -277,7 +291,7 @@ RGS.options = {
 						   "Good: Normal map liquid textures, and texture-based ripples and sky reflection.\n\n" ..
 						   "Fair: Normal map liquid textures, no reflection, and sky reflection.\n\n" ..
 						   "Low: Animated liquid textures, texture-based ripples, and no reflection.",
-					order = 2,
+					order = 3,
 					values = {
 						[3] = "High",
 						[2] = "Good",
@@ -293,7 +307,7 @@ RGS.options = {
                     type = "select",
                     name = "Particle Density",
 					desc = "Controls the number of particles used in effects caused by spells, fires, etc. Decrease to improve performance.",
-					order = 3,
+					order = 4,
 					values = {
 						[5] = "Ultra",
 						[4] = "High",
@@ -311,7 +325,7 @@ RGS.options = {
                     type = "select",
                     name = "SSAO",
 					desc = "Controls the rendering quality of the advanced lighting effects. Decreasing this may greatly improve performance.",
-					order = 4,
+					order = 5,
 					values = {
 						[4] = "Ultra",
 						[3] = "High",
@@ -332,7 +346,7 @@ RGS.options = {
 						   "Good: Particle depth fading and low-resolution refraction. Depth-based sunshafts and glare.\n\n" ..
 						   "Fair: Particle depth fading and no glare. Traditional sunshafts and refraction.\n\n" ..
 						   "Low: No particle depth fading or glare. Depth-based sunshafts and traditional refraction.",
-					order = 5,
+					order = 6,
 					values = {
 						[3] = "High",
 						[2] = "Good",
@@ -354,7 +368,7 @@ RGS.options = {
 						   "Good: Medium-resolution volume fog.\n\n" ..
 						   "High: High-resolution volume fog.\n\n" ..
 						   "Ultra: Ultra-resolution volume fog with additional placements.",
-					order = 6,
+					order = 7,
 					values = {
 						[4] = "Ultra",
 						[3] = "High",
@@ -374,8 +388,8 @@ RGS.options = {
 						   "High: High-resolution environment textures, high-detail terrain blending, and high-resolution character textures.\n\n" ..
 						   "Fair: Medium-resolution environment textures, low-detail terrain blending, and low-resolution character textures.\n\n" ..
 						   "Low: Low-resolution environment textures, very low-detail terrain blending, and low-resolution character textures.\n\n" ..
-							"|cffff0000Changes to this setting from your base setting will result in momentary lag increase when transitioning to and from that group.|r",
-					order = 7,
+							"|cffff0000Modifying setting from base/current increases momentarily the lag on graphic setting change.|r",
+					order = 8,
 					values = {
 						[2] = "High",
 						[1] = "Fair",
@@ -395,7 +409,7 @@ RGS.options = {
 						   "Half: Reduce non-essential spells shown by around 50%.\n\n" ..
 						   "Most: Reduce non-essential spells shown based on framerate. If you are above your desired framerate, everything will be shown.\n\n" ..
 						   "Everything: Always show all spells.",
-					order = 8,
+					order = 9,
 					values = {
 						[0] = "Essential",
 						[1] = "Some",
@@ -413,7 +427,7 @@ RGS.options = {
                     type = "select",
                     name = "Projected Textures",
 					desc = "Enables the projecting of textures to the environment. Disabling this may improve performance.",
-					order = 9,
+					order = 10,
 					values = {
 						[1] = "Enabled",
 						[0] = "Disabled"
@@ -427,7 +441,7 @@ RGS.options = {
                     type = "range",
                     name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
-					order = 10,
+					order = 11,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -440,7 +454,7 @@ RGS.options = {
                     type = "range",
                     name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
-					order = 11,
+					order = 12,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -453,7 +467,7 @@ RGS.options = {
                     type = "range",
                     name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
-					order = 12,
+					order = 13,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -469,6 +483,13 @@ RGS.options = {
             type = "group",
 			order = 3,
             args = {
+				updateSettingsButton = {
+					type = "execute",
+					name = "Update Settings",
+					desc = "Update this profile with the current in-game graphics settings.",
+					order = 1,  -- Adjust the order to place the button correctly in the list
+					func = function() RGS:UpdateProfileWithCurrentSettings("raid") end,
+				},
                 shadowQuality = {
                     type = "select",
                     name = "Shadow Quality",
@@ -479,7 +500,7 @@ RGS.options = {
 						   "Fair: Low-resolution environment, close distance unit shadows.\n\n" ..
 						   "Low: Blob shadows.\n\n" ..
 						   "Off: No shadows.",
-					order = 1,
+					order = 2,
 					values = {
 						[5] = "Ultra-High",
 						[4] = "Ultra",
@@ -502,7 +523,7 @@ RGS.options = {
 						   "Good: Normal map liquid textures, and texture-based ripples and sky reflection.\n\n" ..
 						   "Fair: Normal map liquid textures, no reflection, and sky reflection.\n\n" ..
 						   "Low: Animated liquid textures, texture-based ripples, and no reflection.",
-					order = 2,
+					order = 3,
 					values = {
 						[3] = "High",
 						[2] = "Good",
@@ -518,7 +539,7 @@ RGS.options = {
                     type = "select",
                     name = "Particle Density",
 					desc = "Controls the number of particles used in effects caused by spells, fires, etc. Decrease to improve performance.",
-					order = 3,
+					order = 4,
 					values = {
 						[5] = "Ultra",
 						[4] = "High",
@@ -536,7 +557,7 @@ RGS.options = {
                     type = "select",
                     name = "SSAO",
 					desc = "Controls the rendering quality of the advanced lighting effects. Decreasing this may greatly improve performance.",
-					order = 4,
+					order = 5,
 					values = {
 						[4] = "Ultra",
 						[3] = "High",
@@ -557,7 +578,7 @@ RGS.options = {
 						   "Good: Particle depth fading and low-resolution refraction. Depth-based sunshafts and glare.\n\n" ..
 						   "Fair: Particle depth fading and no glare. Traditional sunshafts and refraction.\n\n" ..
 						   "Low: No particle depth fading or glare. Depth-based sunshafts and traditional refraction.",
-					order = 5,
+					order = 6,
 					values = {
 						[3] = "High",
 						[2] = "Good",
@@ -579,7 +600,7 @@ RGS.options = {
 						   "Good: Medium-resolution volume fog.\n\n" ..
 						   "High: High-resolution volume fog.\n\n" ..
 						   "Ultra: Ultra-resolution volume fog with additional placements.",
-					order = 6,
+					order = 7,
 					values = {
 						[4] = "Ultra",
 						[3] = "High",
@@ -599,8 +620,8 @@ RGS.options = {
 						   "High: High-resolution environment textures, high-detail terrain blending, and high-resolution character textures.\n\n" ..
 						   "Fair: Medium-resolution environment textures, low-detail terrain blending, and low-resolution character textures.\n\n" ..
 						   "Low: Low-resolution environment textures, very low-detail terrain blending, and low-resolution character textures.\n\n" ..
-							"|cffff0000Changes to this setting from your base setting will result in momentary lag increase when transitioning to and from that group.|r",
-					order = 7,
+							"|cffff0000Modifying setting from base/current increases momentarily the lag on graphic setting change.|r",
+					order = 8,
 					values = {
 						[2] = "High",
 						[1] = "Fair",
@@ -620,7 +641,7 @@ RGS.options = {
 						   "Half: Reduce non-essential spells shown by around 50%.\n\n" ..
 						   "Most: Reduce non-essential spells shown based on framerate. If you are above your desired framerate, everything will be shown.\n\n" ..
 						   "Everything: Always show all spells.",
-					order = 8,
+					order = 9,
 					values = {
 						[0] = "Essential",
 						[1] = "Some",
@@ -638,7 +659,7 @@ RGS.options = {
                     type = "select",
                     name = "Projected Textures",
 					desc = "Enables the projecting of textures to the environment. Disabling this may improve performance.",
-					order = 9,
+					order = 10,
 					values = {
 						[1] = "Enabled",
 						[0] = "Disabled"
@@ -652,7 +673,7 @@ RGS.options = {
                     type = "range",
                     name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
-					order = 10,
+					order = 11,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -665,7 +686,7 @@ RGS.options = {
                     type = "range",
                     name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
-					order = 11,
+					order = 12,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -678,7 +699,7 @@ RGS.options = {
                     type = "range",
                     name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
-					order = 12,
+					order = 13,
                     min = 1,
                     max = 10,
                     step = 1,
