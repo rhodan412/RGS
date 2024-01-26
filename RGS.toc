@@ -2,7 +2,7 @@
 ## Title: Rhodan's Graphical Settings
 ## Notes: Dynamic graphical settings based on certain group conditions.
 ## Author: Rhodan
-## Version: 0.1
+## Version: 1.0
 ## IconTexture: Interface\AddOns\RGS\rhodan.tga
 
 ## SavedVariables: RGSDB
