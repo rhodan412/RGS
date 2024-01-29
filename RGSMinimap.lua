@@ -43,46 +43,47 @@ RGS.dataBroker = ldb:NewDataObject("RGS", {
 -- 3. Minimap Button
 ---------------------------
 
--- Create the minimap button frame
-RGS.MinimapButton = CreateFrame("Button", "MyMinimapButton", Minimap)
-RGS.MinimapButton:SetSize(25, 25)  -- Set the size of the frame
+-- Blocking the Minimap button for now until have time to set an option to disable having it
+-- -- Create the minimap button frame
+-- RGS.MinimapButton = CreateFrame("Button", "MyMinimapButton", Minimap)
+-- RGS.MinimapButton:SetSize(25, 25)  -- Set the size of the frame
 
 
--- Set up the texture for the button
-RGS.MinimapButton:SetNormalTexture("Interface\\Addons\\RGS\\rhodan")
-RGS.MinimapButton:SetHighlightTexture("Interface\\Addons\\RGS\\rhodan")
-RGS.MinimapButton:SetPushedTexture("Interface\\Addons\\RGS\\rhodan")
+-- -- Set up the texture for the button
+-- RGS.MinimapButton:SetNormalTexture("Interface\\Addons\\RGS\\rhodan")
+-- RGS.MinimapButton:SetHighlightTexture("Interface\\Addons\\RGS\\rhodan")
+-- RGS.MinimapButton:SetPushedTexture("Interface\\Addons\\RGS\\rhodan")
 
 
--- Set the position of the minimap button
-RGS.MinimapButton:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 0, 0)
+-- -- Set the position of the minimap button
+-- RGS.MinimapButton:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 0, 0)
 
 
--- OnClick handler
-RGS.MinimapButton:SetScript("OnClick", function()
-	InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")
-	InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")  -- Call twice to actually open the page
-end)
+-- -- OnClick handler
+-- RGS.MinimapButton:SetScript("OnClick", function()
+	-- InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")
+	-- InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")  -- Call twice to actually open the page
+-- end)
 
 
--- Assuming MinimapButton is your minimap button
-RGS.MinimapButton:SetMovable(true)
-RGS.MinimapButton:EnableMouse(true)
+-- -- Assuming MinimapButton is your minimap button
+-- RGS.MinimapButton:SetMovable(true)
+-- RGS.MinimapButton:EnableMouse(true)
 
-RGS.MinimapButton:SetScript("OnDragStart", function(self)
-    self:StartMoving()
-end)
+-- RGS.MinimapButton:SetScript("OnDragStart", function(self)
+    -- self:StartMoving()
+-- end)
 
-RGS.MinimapButton:SetScript("OnDragStop", function(self)
-    self:StopMovingOrSizing()
-end)
+-- RGS.MinimapButton:SetScript("OnDragStop", function(self)
+    -- self:StopMovingOrSizing()
+-- end)
 
-RGS.MinimapButton:RegisterForDrag("LeftButton")
+-- RGS.MinimapButton:RegisterForDrag("LeftButton")
 
--- Tooltip scripts
-RGS.MinimapButton:SetScript("OnEnter", function(self)
-    GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-    GameTooltip:SetText("RGS - Rhodan's Graphical Settings", 1, 1, 1)
-    GameTooltip:AddLine("Left-click for configuration.", 0.8, 0.8, 0.8, true)
-    GameTooltip:Show()
-end)
+-- -- Tooltip scripts
+-- RGS.MinimapButton:SetScript("OnEnter", function(self)
+    -- GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+    -- GameTooltip:SetText("RGS - Rhodan's Graphical Settings", 1, 1, 1)
+    -- GameTooltip:AddLine("Left-click for configuration.", 0.8, 0.8, 0.8, true)
+    -- GameTooltip:Show()
+-- end)
