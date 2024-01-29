@@ -186,10 +186,13 @@ end
 function RGS:UpdateGraphicsSettingsBasedOnGroupStatus()
     local size = GetNumGroupMembers()
     if size == 0 then
+		--print("Number of group members is " .. size)
         self:ApplyProfileSettings(self.db.profile.solo)
-    elseif size > 0 and size <= 4 then
+    elseif size > 0 and size <= 5 then
+		--print("Number of group members is " .. size)
         self:ApplyProfileSettings(self.db.profile.group)
     else
+		--print("Number of group members is " .. size)
         self:ApplyProfileSettings(self.db.profile.raid)
     end
 end
