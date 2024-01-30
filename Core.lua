@@ -27,6 +27,9 @@ RGS = RGS or {}
 
 -- Function called when addon is loaded
 function RGS:OnInitialize()
+    if self.isInitialized then return end
+    self.isInitialized = true
+	
     -- Query the current graphics settings from CVars
     local currentShadowQuality = GetCVar("graphicsShadowQuality")
     local currentLiquidDetail = GetCVar("graphicsLiquidDetail")
@@ -200,14 +203,15 @@ end
 
 
 -- This function determines the current group status and applies the appropriate settings.
-function RGS:UpdateGraphicsSettingsBasedOnGroupStatus()
+-- Added a new parameter 'isInScenario' to explicitly handle scenario updates.
+function RGS:UpdateGraphicsSettingsBasedOnGroupStatus(isInScenario)
     local size = GetNumGroupMembers()
 
-    -- First check for raid group (more than 5 members)
+    -- Check for raid group (more than 5 members) first
     if size > 5 then
         self:ApplyProfileSettings(self.db.profile.raid)
-    -- Next, check if the player is in a scenario
-    elseif C_Scenario.IsInScenario() then
+    -- Next, check for scenario update
+    elseif isInScenario then
         self:ApplyProfileSettings(self.db.profile.scenario)
     -- Check for solo or group (5 or fewer members)
     elseif size == 0 then
