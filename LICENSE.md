@@ -1,6 +1,6 @@
 All Rights Reserved
 
-Copyright (c) RGS by Aurleis
+Copyright (c) RGS by Rhodan {Aurleis}
 
 Created by Techcable
 

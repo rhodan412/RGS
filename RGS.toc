@@ -1,7 +1,7 @@
 ## Interface: 100205
 ## Title: Rhodan's Graphical Settings
 ## Notes: Dynamic graphical settings based on certain group conditions.
-## Author: Rhodan
+## Author: Rhodan {Aurleis}
 ## Version: 1.05
 ## IconTexture: Interface\AddOns\RGS\rhodan.tga
 
