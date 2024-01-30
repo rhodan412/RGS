@@ -58,6 +58,20 @@ function RGS:OnInitialize()
                 environmentDetail = 6,
                 groundClutter = 6,
             },
+            scenario = {
+                shadowQuality = 3,
+                liquidDetail = 2,
+                particleDensity = 4,
+                SSAOSetting = 3,
+                depthEffects = 3,
+                computeEffects = 3,
+                textureResolution = 2,
+                spellDensity = 4,
+                projectedTextures = 1,
+                viewDistance = 6,
+                environmentDetail = 6,
+                groundClutter = 6,
+            },
             group = {
                 shadowQuality = 3,
                 liquidDetail = 2,
@@ -99,6 +113,9 @@ function RGS:OnInitialize()
     end
 
     -- Register 'Group' and 'Raid' as sub-categories under the 'Solo' main category
+    AC:RegisterOptionsTable("Rhodan's Graphical Settings - Scenario", self.options.args.scenario)
+    self.optionsFrame.scenario = ACD:AddToBlizOptions("Rhodan's Graphical Settings - Scenario", "Scenario", "Rhodan's Graphical Settings")
+
     -- Make sure "self.options.args.group" and "self.options.args.raid" refer to the correct group and raid options structures
     AC:RegisterOptionsTable("Rhodan's Graphical Settings - Group", self.options.args.group)
     self.optionsFrame.group = ACD:AddToBlizOptions("Rhodan's Graphical Settings - Group", "Group", "Rhodan's Graphical Settings")
@@ -185,14 +202,17 @@ end
 -- This function determines the current group status and applies the appropriate settings.
 function RGS:UpdateGraphicsSettingsBasedOnGroupStatus()
     local size = GetNumGroupMembers()
-    if size == 0 then
-		--print("Number of group members is " .. size)
-        self:ApplyProfileSettings(self.db.profile.solo)
-    elseif size > 0 and size <= 5 then
-		--print("Number of group members is " .. size)
-        self:ApplyProfileSettings(self.db.profile.group)
-    else
-		--print("Number of group members is " .. size)
+
+    -- First check for raid group (more than 5 members)
+    if size > 5 then
         self:ApplyProfileSettings(self.db.profile.raid)
+    -- Next, check if the player is in a scenario
+    elseif C_Scenario.IsInScenario() then
+        self:ApplyProfileSettings(self.db.profile.scenario)
+    -- Check for solo or group (5 or fewer members)
+    elseif size == 0 then
+        self:ApplyProfileSettings(self.db.profile.solo)
+    else
+        self:ApplyProfileSettings(self.db.profile.group)
     end
 end
