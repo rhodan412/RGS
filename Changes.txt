@@ -1,3 +1,5 @@
+1.06 - Updated Icon Image
+
 1.06 - Added option to create profile for Scenario
 
 1.05 - Updated settings for what constitutes a group
