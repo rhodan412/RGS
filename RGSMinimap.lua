@@ -23,7 +23,7 @@ local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
 -- Create a Data Broker object
 RGS.dataBroker = ldb:NewDataObject("RGS", {
     type = "launcher",
-    icon = "Interface\\Addons\\RGS\\rhodan.tga",  -- Replace with your own icon
+    icon = "Interface\\Addons\\RGS\\RGSicon.tga",  -- Replace with your own icon
     OnClick = function(_, button)
 		if button == "LeftButton" then
 			-- Open the add-on's configuration window
@@ -50,9 +50,9 @@ RGS.dataBroker = ldb:NewDataObject("RGS", {
 
 
 -- -- Set up the texture for the button
--- RGS.MinimapButton:SetNormalTexture("Interface\\Addons\\RGS\\rhodan")
--- RGS.MinimapButton:SetHighlightTexture("Interface\\Addons\\RGS\\rhodan")
--- RGS.MinimapButton:SetPushedTexture("Interface\\Addons\\RGS\\rhodan")
+-- RGS.MinimapButton:SetNormalTexture("Interface\\Addons\\RGS\\RGSicon")
+-- RGS.MinimapButton:SetHighlightTexture("Interface\\Addons\\RGS\\RGSicon")
+-- RGS.MinimapButton:SetPushedTexture("Interface\\Addons\\RGS\\RGSicon")
 
 
 -- -- Set the position of the minimap button
