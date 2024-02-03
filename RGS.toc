@@ -3,7 +3,7 @@
 ## Notes: Dynamic graphical settings based on certain group conditions.
 ## Author: Rhodan {Aurleis}
 ## Version: 1.05
-## IconTexture: Interface\AddOns\RGS\rhodan.tga
+## IconTexture: Interface\AddOns\RGS\RGSicon.png
 
 ## SavedVariables: RGSDB
 
