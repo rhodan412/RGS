@@ -23,7 +23,7 @@ local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
 -- Create a Data Broker object
 RGS.dataBroker = ldb:NewDataObject("RGS", {
     type = "launcher",
-    icon = "Interface\\Addons\\RGS\\RGSicon.tga",  -- Replace with your own icon
+    icon = "Interface\\Addons\\RGS\\RGSicon.tga",
     OnClick = function(_, button)
 		if button == "LeftButton" then
 			-- Open the add-on's configuration window
