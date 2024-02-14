@@ -44,67 +44,91 @@ function RGS:OnInitialize()
     local currentEnvironmentDetail = GetCVar("graphicsEnvironmentDetail")
     local currentGroundClutter = GetCVar("graphicsGroundClutter")
 
-    -- Initialize the database with current settings or defaults if they don't exist
-    self.db = LibStub("AceDB-3.0"):New("RGSDB", {
-        profile = {
+    -- Initialize the database with a structure for default profiles
+    self.db = LibStub("AceDB-3.0"):New("RGSDB", {}, true)
+    
+    -- Check if the profiles are already set in the DB, otherwise set defaults
+    if not self.db.profile.solo or not next(self.db.profile.solo) then
+        -- Default settings for each profile if not already in DB
+        local defaultProfiles = {
             solo = {
-                shadowQuality = 3,
-                liquidDetail = 2,
-                particleDensity = 4,
-                SSAOSetting = 3,
-                depthEffects = 3,
-                computeEffects = 3,
-                textureResolution = 2,
-                spellDensity = 4,
+                spellDensity = 0,
+                particleDensity = 3,
                 projectedTextures = 1,
-                viewDistance = 6,
-                environmentDetail = 6,
-                groundClutter = 6,
+                environmentDetail = 7,
+                depthEffects = 3,
+                textureResolution = 2,
+                groundClutter = 7,
+                SSAOSetting = 3,
+                viewDistance = 7,
+                shadowQuality = 3,
+                computeEffects = 2,
+                liquidDetail = 2,
+				textureFilteringMode = 5,
+				shadowRT = 0,
+				sunShafts = 0,
             },
             scenario = {
-                shadowQuality = 3,
-                liquidDetail = 2,
-                particleDensity = 4,
-                SSAOSetting = 3,
-                depthEffects = 3,
-                computeEffects = 3,
-                textureResolution = 2,
-                spellDensity = 4,
+                spellDensity = 0,
+                particleDensity = 2,
                 projectedTextures = 1,
-                viewDistance = 6,
-                environmentDetail = 6,
-                groundClutter = 6,
+                environmentDetail = 4,
+                depthEffects = 3,
+                textureResolution = 2,
+                groundClutter = 5,
+                SSAOSetting = 2,
+                viewDistance = 4,
+                shadowQuality = 1,
+                computeEffects = 2,
+                liquidDetail = 1,
+				textureFilteringMode = 5,
+				shadowRT = 0,
+				sunShafts = 0,
             },
             group = {
-                shadowQuality = 3,
-                liquidDetail = 2,
-                particleDensity = 4,
-                SSAOSetting = 3,
-                depthEffects = 3,
-                computeEffects = 3,
-                textureResolution = 2,
-                spellDensity = 4,
+                spellDensity = 0,
+                particleDensity = 2,
                 projectedTextures = 1,
-                viewDistance = 6,
-                environmentDetail = 6,
-                groundClutter = 6,
+                environmentDetail = 4,
+                depthEffects = 3,
+                textureResolution = 2,
+                groundClutter = 5,
+                SSAOSetting = 3,
+                viewDistance = 5,
+                shadowQuality = 2,
+                computeEffects = 2,
+                liquidDetail = 2,
+				textureFilteringMode = 5,
+				shadowRT = 0,
+				sunShafts = 0,
             },
             raid = {
-                shadowQuality = 3,
-                liquidDetail = 2,
-                particleDensity = 4,
-                SSAOSetting = 3,
-                depthEffects = 3,
-                computeEffects = 3,
-                textureResolution = 2,
-                spellDensity = 4,
+                spellDensity = 0,
+                particleDensity = 1,
                 projectedTextures = 1,
-                viewDistance = 6,
-                environmentDetail = 6,
-                groundClutter = 6,
+                environmentDetail = 4,
+                depthEffects = 1,
+                textureResolution = 2,
+                groundClutter = 3,
+                SSAOSetting = 1,
+                viewDistance = 3,
+                shadowQuality = 0,
+                computeEffects = 1,
+                liquidDetail = 1,
+				textureFilteringMode = 5,
+				shadowRT = 0,
+				sunShafts = 0,
             },
-        },
-    }, true) -- true for a default profile
+        }
+
+        -- Loop through the default profile structure to set defaults if not present
+        for profileType, settings in pairs(defaultProfiles) do
+            if not self.db.profile[profileType] or not next(self.db.profile[profileType]) then
+                self.db.profile[profileType] = settings
+            end
+        end
+    end
+    --}, true) -- true for a default profile
 
     -- Register the main category as 'Solo' directly under the addon name
     if not self.optionsFrame then
@@ -158,7 +182,10 @@ function RGS:UpdateProfileWithCurrentSettings(profileType)
     profile.viewDistance = tonumber(GetCVar("graphicsViewDistance"))
     profile.environmentDetail = tonumber(GetCVar("graphicsEnvironmentDetail"))
     profile.groundClutter = tonumber(GetCVar("graphicsGroundClutter"))
-
+	profile.textureFilteringMode = tonumber(GetCVar("textureFilteringMode"))
+	profile.shadowRT = tonumber(GetCVar("shadowRT"))
+	profile.sunShafts = tonumber(GetCVar("sunShafts"))
+	
     print(profileType .. " profile updated with current settings.")
 end
 
@@ -186,6 +213,9 @@ function RGS:ApplyProfileSettings(profile)
     {"graphicsViewDistance", profile.viewDistance},
     {"graphicsEnvironmentDetail", profile.environmentDetail},
     {"graphicsGroundClutter", profile.groundClutter},
+	{"textureFilteringMode", profile.textureFilteringMode},
+	{"shadowRT", profile.shadowRT},
+	{"sunShafts", profile.sunShafts},
 	
 	-- graphicsTextureResolution will have a longer delay
 	{"graphicsTextureResolution", profile.textureResolution},

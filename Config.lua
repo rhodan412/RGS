@@ -215,11 +215,29 @@ RGS.options = {
 						RGS.db.profile.solo.projectedTextures = value						
 					end,
                 },
+                textureFilteringMode = {
+                    type = "select",
+                    name = "Texture Filtering Mode",
+					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
+					order = 11,
+					values = {
+						[5] = "16x Anisotropic",
+						[4] = "8x Anisotropic",
+						[3] = "4x Anisotropic",
+						[2] = "2x Anisotropic",
+						[1] = "Trilinear",
+						[0] = "Bilinear"
+					},
+                    get = function(info) return RGS.db.profile.solo.textureFilteringMode end,
+					set = function(info, value)
+						RGS.db.profile.solo.textureFilteringMode = value						
+					end,
+                },
                 viewDistance = {
                     type = "range",
                     name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
-					order = 11,
+					order = 12,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -232,7 +250,7 @@ RGS.options = {
                     type = "range",
                     name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
-					order = 12,
+					order = 13,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -245,13 +263,51 @@ RGS.options = {
                     type = "range",
                     name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
-					order = 13,
+					order = 14,
                     min = 1,
                     max = 10,
                     step = 1,
                     get = function(info) return RGS.db.profile.solo.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.solo.groundClutter = value						
+					end,
+                },
+                shadowRT = {
+                    type = "select",
+                    name = "Raytraced Shadows",
+					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
+						   "This feature requires:\n" ..
+						   "A hardware ray tracing capable graphics card\n" ..
+						   "Windows 10 May 2020 Update (version 2004)\n" ..
+						   "Up to date graphics drivers DirectX 12\n\n" ..
+						   "Fair: Ray Traced Shadows from directional light sources at reduced resolution.\n\n" ..
+						   "Good: Ray Traced Shadows from directional and local light sources at reduced resolution.\n\n" ..
+						   "High: Ray Traced Shadows from directional and local light sources at full resolution.",
+					order = 15,
+					values = {
+						[3] = "High",
+						[2] = "Good",
+						[1] = "Fair",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.solo.shadowRT end,
+					set = function(info, value)
+						RGS.db.profile.solo.shadowRT = value						
+					end,
+                },
+                sunShafts = {
+                    type = "select",
+                    name = "Sun Shafts",
+					--desc = "",
+					order = 16,
+					values = {
+						[2] = "High",
+						[1] = "Low",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.solo.sunShafts end,
+					set = function(info, value)
+						RGS.db.profile.solo.sunShafts = value						
 					end,
                 },
             },
@@ -446,11 +502,29 @@ RGS.options = {
 						RGS.db.profile.scenario.projectedTextures = value						
 					end,
                 },
+                textureFilteringMode = {
+                    type = "select",
+                    name = "Texture Filtering Mode",
+					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
+					order = 11,
+					values = {
+						[5] = "16x Anisotropic",
+						[4] = "8x Anisotropic",
+						[3] = "4x Anisotropic",
+						[2] = "2x Anisotropic",
+						[1] = "Trilinear",
+						[0] = "Bilinear"
+					},
+                    get = function(info) return RGS.db.profile.scenario.textureFilteringMode end,
+					set = function(info, value)
+						RGS.db.profile.scenario.textureFilteringMode = value						
+					end,
+                },
                 viewDistance = {
                     type = "range",
                     name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
-					order = 11,
+					order = 12,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -463,7 +537,7 @@ RGS.options = {
                     type = "range",
                     name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
-					order = 12,
+					order = 13,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -476,13 +550,51 @@ RGS.options = {
                     type = "range",
                     name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
-					order = 13,
+					order = 14,
                     min = 1,
                     max = 10,
                     step = 1,
                     get = function(info) return RGS.db.profile.scenario.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.scenario.groundClutter = value						
+					end,
+                },
+                shadowRT = {
+                    type = "select",
+                    name = "Raytraced Shadows",
+					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
+						   "This feature requires:\n" ..
+						   "A hardware ray tracing capable graphics card\n" ..
+						   "Windows 10 May 2020 Update (version 2004)\n" ..
+						   "Up to date graphics drivers DirectX 12\n\n" ..
+						   "Fair: Ray Traced Shadows from directional light sources at reduced resolution.\n\n" ..
+						   "Good: Ray Traced Shadows from directional and local light sources at reduced resolution.\n\n" ..
+						   "High: Ray Traced Shadows from directional and local light sources at full resolution.",
+					order = 15,
+					values = {
+						[3] = "High",
+						[2] = "Good",
+						[1] = "Fair",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.scenario.shadowRT end,
+					set = function(info, value)
+						RGS.db.profile.scenario.shadowRT = value						
+					end,
+                },
+                sunShafts = {
+                    type = "select",
+                    name = "Sun Shafts",
+					--desc = "",
+					order = 16,
+					values = {
+						[2] = "High",
+						[1] = "Low",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.scenario.sunShafts end,
+					set = function(info, value)
+						RGS.db.profile.scenario.sunShafts = value						
 					end,
                 },
             },
@@ -664,6 +776,24 @@ RGS.options = {
 						RGS.db.profile.group.spellDensity = value						
 					end,
                 },
+                textureFilteringMode = {
+                    type = "select",
+                    name = "Texture Filtering Mode",
+					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
+					order = 11,
+					values = {
+						[5] = "16x Anisotropic",
+						[4] = "8x Anisotropic",
+						[3] = "4x Anisotropic",
+						[2] = "2x Anisotropic",
+						[1] = "Trilinear",
+						[0] = "Bilinear"
+					},
+                    get = function(info) return RGS.db.profile.group.textureFilteringMode end,
+					set = function(info, value)
+						RGS.db.profile.group.textureFilteringMode = value						
+					end,
+                },
                 projectedTextures = {
                     type = "select",
                     name = "Projected Textures",
@@ -682,7 +812,7 @@ RGS.options = {
                     type = "range",
                     name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
-					order = 11,
+					order = 12,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -695,7 +825,7 @@ RGS.options = {
                     type = "range",
                     name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
-					order = 12,
+					order = 13,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -708,13 +838,51 @@ RGS.options = {
                     type = "range",
                     name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
-					order = 13,
+					order = 14,
                     min = 1,
                     max = 10,
                     step = 1,
                     get = function(info) return RGS.db.profile.group.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.group.groundClutter = value						
+					end,
+                },
+                shadowRT = {
+                    type = "select",
+                    name = "Raytraced Shadows",
+					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
+						   "This feature requires:\n" ..
+						   "A hardware ray tracing capable graphics card\n" ..
+						   "Windows 10 May 2020 Update (version 2004)\n" ..
+						   "Up to date graphics drivers DirectX 12\n\n" ..
+						   "Fair: Ray Traced Shadows from directional light sources at reduced resolution.\n\n" ..
+						   "Good: Ray Traced Shadows from directional and local light sources at reduced resolution.\n\n" ..
+						   "High: Ray Traced Shadows from directional and local light sources at full resolution.",
+					order = 15,
+					values = {
+						[3] = "High",
+						[2] = "Good",
+						[1] = "Fair",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.group.shadowRT end,
+					set = function(info, value)
+						RGS.db.profile.group.shadowRT = value						
+					end,
+                },
+                sunShafts = {
+                    type = "select",
+                    name = "Sun Shafts",
+					--desc = "",
+					order = 16,
+					values = {
+						[2] = "High",
+						[1] = "Low",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.group.sunShafts end,
+					set = function(info, value)
+						RGS.db.profile.group.sunShafts = value						
 					end,
                 },
             },
@@ -873,6 +1041,24 @@ RGS.options = {
 						RGS.db.profile.raid.textureResolution = value						
 					end,
                 },
+                textureFilteringMode = {
+                    type = "select",
+                    name = "Texture Filtering Mode",
+					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
+					order = 11,
+					values = {
+						[5] = "16x Anisotropic",
+						[4] = "8x Anisotropic",
+						[3] = "4x Anisotropic",
+						[2] = "2x Anisotropic",
+						[1] = "Trilinear",
+						[0] = "Bilinear"
+					},
+                    get = function(info) return RGS.db.profile.raid.textureFilteringMode end,
+					set = function(info, value)
+						RGS.db.profile.raid.textureFilteringMode = value						
+					end,
+                },
                 spellDensity = {
                     type = "select",
                     name = "Spell Density",
@@ -914,7 +1100,7 @@ RGS.options = {
                     type = "range",
                     name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
-					order = 11,
+					order = 12,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -927,7 +1113,7 @@ RGS.options = {
                     type = "range",
                     name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
-					order = 12,
+					order = 13,
                     min = 1,
                     max = 10,
                     step = 1,
@@ -940,13 +1126,51 @@ RGS.options = {
                     type = "range",
                     name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
-					order = 13,
+					order = 14,
                     min = 1,
                     max = 10,
                     step = 1,
                     get = function(info) return RGS.db.profile.raid.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.raid.groundClutter = value						
+					end,
+                },
+                shadowRT = {
+                    type = "select",
+                    name = "Raytraced Shadows",
+					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
+						   "This feature requires:\n" ..
+						   "A hardware ray tracing capable graphics card\n" ..
+						   "Windows 10 May 2020 Update (version 2004)\n" ..
+						   "Up to date graphics drivers DirectX 12\n\n" ..
+						   "Fair: Ray Traced Shadows from directional light sources at reduced resolution.\n\n" ..
+						   "Good: Ray Traced Shadows from directional and local light sources at reduced resolution.\n\n" ..
+						   "High: Ray Traced Shadows from directional and local light sources at full resolution.",
+					order = 15,
+					values = {
+						[3] = "High",
+						[2] = "Good",
+						[1] = "Fair",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.raid.shadowRT end,
+					set = function(info, value)
+						RGS.db.profile.raid.shadowRT = value						
+					end,
+                },
+                sunShafts = {
+                    type = "select",
+                    name = "Sun Shafts",
+					--desc = "",
+					order = 16,
+					values = {
+						[2] = "High",
+						[1] = "Low",
+						[0] = "Disabled"
+					},
+                    get = function(info) return RGS.db.profile.raid.sunShafts end,
+					set = function(info, value)
+						RGS.db.profile.raid.sunShafts = value						
 					end,
                 },
             },
