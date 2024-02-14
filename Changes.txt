@@ -1,4 +1,4 @@
-1.06 - Updated Icon Image
+1.07 - Updated Icon Image, added shadowRT, textureFilteringMode and sunShafts
 
 1.06 - Added option to create profile for Scenario
 
