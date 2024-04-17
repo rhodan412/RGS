@@ -1,8 +1,8 @@
-## Interface: 100205
+## Interface: 100207
 ## Title: Rhodan's Graphical Settings
 ## Notes: Dynamic graphical settings based on certain group conditions.
 ## Author: Rhodan {Aurleis}
-## Version: 1.07
+## Version: 1.09
 ## IconTexture: Interface\AddOns\RGS\RGSicon.png
 
 ## SavedVariables: RGSDB
