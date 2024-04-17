@@ -25,7 +25,7 @@ RGS.dataBroker = ldb:NewDataObject("RGS", {
     type = "launcher",
     icon = "Interface\\Addons\\RGS\\RGSicon.tga",
     OnClick = function(_, button)
-		if button == "LeftButton" then
+		if button == "RightButton" or "LeftButton" then
 			-- Open the add-on's configuration window
 			InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")
 			InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")  -- Call twice to actually open the page
@@ -34,7 +34,7 @@ RGS.dataBroker = ldb:NewDataObject("RGS", {
     OnTooltipShow = function(tooltip)
         if not tooltip or not tooltip.AddLine then return end
         tooltip:AddLine("RGS - Rhodan's Graphical Settings")
-        tooltip:AddLine("Left click for Configuration.")
+        tooltip:AddLine("Left/Right click for Configuration.")
     end,
 })
 
