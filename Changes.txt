@@ -1,3 +1,5 @@
+1.1 - Corrected values in Config
+
 1.09 - Bump version for 10.2.7 & added option for right clicking LDB to open Config page
 
 1.08 - Bump version

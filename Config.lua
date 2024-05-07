@@ -14,7 +14,8 @@ local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 local RGS = LibStub("AceAddon-3.0"):GetAddon("RGS")
 
 RGS = RGS or {}
-
+RGS.db = RGS.db or {}
+RGS.db.profile = RGS.db.profile or {}
 
 ---------------------------
 -- 2. Options Table
@@ -74,7 +75,7 @@ RGS.options = {
 						[3] = "High",
 						[2] = "Good",
 						[1] = "Fair",
-						[1] = "Low"
+						[0] = "Low"
 					},
                     get = function(info) return RGS.db.profile.solo.liquidDetail end,
 					set = function(info, value)
@@ -344,7 +345,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.scenario.shadowQuality end,
 					set = function(info, value)
-						RGS.db.profile.scenario.shadowQuality = value						
+						RGS.db.profile.scenario.shadowQuality = value					
 					end,
                 },
                 liquidDetail = {
@@ -361,7 +362,7 @@ RGS.options = {
 						[3] = "High",
 						[2] = "Good",
 						[1] = "Fair",
-						[1] = "Low"
+						[0] = "Low"
 					},
                     get = function(info) return RGS.db.profile.scenario.liquidDetail end,
 					set = function(info, value)
@@ -499,7 +500,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.scenario.projectedTextures end,
 					set = function(info, value)
-						RGS.db.profile.scenario.projectedTextures = value						
+						RGS.db.profile.scenario.projectedTextures = value
 					end,
                 },
                 textureFilteringMode = {
@@ -517,7 +518,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.scenario.textureFilteringMode end,
 					set = function(info, value)
-						RGS.db.profile.scenario.textureFilteringMode = value						
+						RGS.db.profile.scenario.textureFilteringMode = value
 					end,
                 },
                 viewDistance = {
@@ -530,7 +531,7 @@ RGS.options = {
                     step = 1,
                     get = function(info) return RGS.db.profile.scenario.viewDistance end,
 					set = function(info, value)
-						RGS.db.profile.scenario.viewDistance = value						
+						RGS.db.profile.scenario.viewDistance = value
 					end,
                 },
                 environmentDetail = {
@@ -543,7 +544,7 @@ RGS.options = {
                     step = 1,
                     get = function(info) return RGS.db.profile.scenario.environmentDetail end,
 					set = function(info, value)
-						RGS.db.profile.scenario.environmentDetail = value						
+						RGS.db.profile.scenario.environmentDetail = value
 					end,
                 },
                 groundClutter = {
@@ -556,7 +557,7 @@ RGS.options = {
                     step = 1,
                     get = function(info) return RGS.db.profile.scenario.groundClutter end,
 					set = function(info, value)
-						RGS.db.profile.scenario.groundClutter = value						
+						RGS.db.profile.scenario.groundClutter = value
 					end,
                 },
                 shadowRT = {
@@ -579,7 +580,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.scenario.shadowRT end,
 					set = function(info, value)
-						RGS.db.profile.scenario.shadowRT = value						
+						RGS.db.profile.scenario.shadowRT = value
 					end,
                 },
                 sunShafts = {
@@ -594,7 +595,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.scenario.sunShafts end,
 					set = function(info, value)
-						RGS.db.profile.scenario.sunShafts = value						
+						RGS.db.profile.scenario.sunShafts = value
 					end,
                 },
             },
@@ -632,7 +633,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.shadowQuality end,
 					set = function(info, value)
-						RGS.db.profile.group.shadowQuality = value						
+						RGS.db.profile.group.shadowQuality = value
 					end,
                 },
                 liquidDetail = {
@@ -649,11 +650,11 @@ RGS.options = {
 						[3] = "High",
 						[2] = "Good",
 						[1] = "Fair",
-						[1] = "Low"
+						[0] = "Low"
 					},
                     get = function(info) return RGS.db.profile.group.liquidDetail end,
 					set = function(info, value)
-						RGS.db.profile.group.liquidDetail = value						
+						RGS.db.profile.group.liquidDetail = value
 					end,
                 },
                 particleDensity = {
@@ -671,7 +672,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.particleDensity end,
 					set = function(info, value)
-						RGS.db.profile.group.particleDensity = value						
+						RGS.db.profile.group.particleDensity = value
 					end,
                 },
                 SSAOSetting = {
@@ -688,7 +689,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.SSAOSetting end,
 					set = function(info, value)
-						RGS.db.profile.group.SSAOSetting = value						
+						RGS.db.profile.group.SSAOSetting = value
 					end,
                 },
                 depthEffects = {
@@ -708,7 +709,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.depthEffects end,
 					set = function(info, value)
-						RGS.db.profile.group.depthEffects = value						
+						RGS.db.profile.group.depthEffects = value
 					end,
                 },
                 computeEffects = {
@@ -731,7 +732,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.computeEffects end,
 					set = function(info, value)
-						RGS.db.profile.group.computeEffects = value						
+						RGS.db.profile.group.computeEffects = value
 					end,
                 },
                 textureResolution = {
@@ -750,7 +751,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.textureResolution end,
 					set = function(info, value)
-						RGS.db.profile.group.textureResolution = value						
+						RGS.db.profile.group.textureResolution = value
 					end,
                 },
                 spellDensity = {
@@ -773,7 +774,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.spellDensity end,
 					set = function(info, value)
-						RGS.db.profile.group.spellDensity = value						
+						RGS.db.profile.group.spellDensity = value
 					end,
                 },
                 textureFilteringMode = {
@@ -791,7 +792,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.textureFilteringMode end,
 					set = function(info, value)
-						RGS.db.profile.group.textureFilteringMode = value						
+						RGS.db.profile.group.textureFilteringMode = value
 					end,
                 },
                 projectedTextures = {
@@ -805,7 +806,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.group.projectedTextures end,
 					set = function(info, value)
-						RGS.db.profile.group.projectedTextures = value						
+						RGS.db.profile.group.projectedTextures = value
 					end,
                 },
                 viewDistance = {
@@ -818,7 +819,7 @@ RGS.options = {
                     step = 1,
                     get = function(info) return RGS.db.profile.group.viewDistance end,
 					set = function(info, value)
-						RGS.db.profile.group.viewDistance = value						
+						RGS.db.profile.group.viewDistance = value
 					end,
                 },
                 environmentDetail = {
@@ -831,7 +832,7 @@ RGS.options = {
                     step = 1,
                     get = function(info) return RGS.db.profile.group.environmentDetail end,
 					set = function(info, value)
-						RGS.db.profile.group.environmentDetail = value						
+						RGS.db.profile.group.environmentDetail = value
 					end,
                 },
                 groundClutter = {
@@ -937,7 +938,7 @@ RGS.options = {
 						[3] = "High",
 						[2] = "Good",
 						[1] = "Fair",
-						[1] = "Low"
+						[0] = "Low"
 					},
                     get = function(info) return RGS.db.profile.raid.liquidDetail end,
 					set = function(info, value)
@@ -1155,7 +1156,7 @@ RGS.options = {
 					},
                     get = function(info) return RGS.db.profile.raid.shadowRT end,
 					set = function(info, value)
-						RGS.db.profile.raid.shadowRT = value						
+						RGS.db.profile.raid.shadowRT = value
 					end,
                 },
                 sunShafts = {
@@ -1184,6 +1185,6 @@ RGS.options = {
 ---------------------------
 
 function RGS:SetupOptions()
-    AceConfig:RegisterOptionsTable("RGS", options)
+    AceConfig:RegisterOptionsTable("RGS", RGS.options)
     AceConfigDialog:AddToBlizOptions("RGS", "Rhodan's Graphical Settings")
 end

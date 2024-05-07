@@ -19,7 +19,8 @@ local ACD = LibStub("AceConfigDialog-3.0")
 local ADBO = LibStub("AceDBOptions-3.0") -- If you're using AceDBOptions-3.0
 
 RGS = RGS or {}
-
+RGS.db = RGS.db or {}
+RGS.db.profile = RGS.db.profile or {}
 
 ---------------------------
 -- 2. Initialization
@@ -29,7 +30,7 @@ RGS = RGS or {}
 function RGS:OnInitialize()
     if self.isInitialized then return end
     self.isInitialized = true
-	
+
     -- Query the current graphics settings from CVars
     local currentShadowQuality = GetCVar("graphicsShadowQuality")
     local currentLiquidDetail = GetCVar("graphicsLiquidDetail")
@@ -46,7 +47,7 @@ function RGS:OnInitialize()
 
     -- Initialize the database with a structure for default profiles
     self.db = LibStub("AceDB-3.0"):New("RGSDB", {}, true)
-    
+
     -- Check if the profiles are already set in the DB, otherwise set defaults
     if not self.db.profile.solo or not next(self.db.profile.solo) then
         -- Default settings for each profile if not already in DB
@@ -185,7 +186,7 @@ function RGS:UpdateProfileWithCurrentSettings(profileType)
 	profile.textureFilteringMode = tonumber(GetCVar("textureFilteringMode"))
 	profile.shadowRT = tonumber(GetCVar("shadowRT"))
 	profile.sunShafts = tonumber(GetCVar("sunShafts"))
-	
+
     print(profileType .. " profile updated with current settings.")
 end
 
@@ -216,12 +217,12 @@ function RGS:ApplyProfileSettings(profile)
 	{"textureFilteringMode", profile.textureFilteringMode},
 	{"shadowRT", profile.shadowRT},
 	{"sunShafts", profile.sunShafts},
-	
+
 	-- graphicsTextureResolution will have a longer delay
 	{"graphicsTextureResolution", profile.textureResolution},
 
     }
-	
+
     for i, cvar in ipairs(cvars) do
         local delayMultiplier = cvar[3] or 1 -- default multiplier is 1 unless specified
         C_Timer.After(baseDelay * (i-1) * delayMultiplier, function()

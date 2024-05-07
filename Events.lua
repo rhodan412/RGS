@@ -10,6 +10,8 @@ Events.lua
 
 local RGS = LibStub("AceAddon-3.0"):GetAddon("RGS")
 RGS = RGS or {}
+RGS.db = RGS.db or {}
+RGS.db.profile = RGS.db.profile or {}
 
 ---------------------------
 -- 2. Register Events
