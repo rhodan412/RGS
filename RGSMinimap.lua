@@ -22,20 +22,20 @@ local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
 
 -- Create a Data Broker object
 RGS.dataBroker = ldb:NewDataObject("RGS", {
-    type = "launcher",
-    icon = "Interface\\Addons\\RGS\\RGSicon.tga",
-    OnClick = function(_, button)
+	type = "launcher",
+	icon = "Interface\\Addons\\RGS\\RGSicon.tga",
+	OnClick = function(_, button)
 		if button == "RightButton" or "LeftButton" then
 			-- Open the add-on's configuration window
 			InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")
 			InterfaceOptionsFrame_OpenToCategory("Rhodan's Graphical Settings")  -- Call twice to actually open the page
-        end
-    end,
-    OnTooltipShow = function(tooltip)
-        if not tooltip or not tooltip.AddLine then return end
-        tooltip:AddLine("RGS - Rhodan's Graphical Settings")
-        tooltip:AddLine("Left/Right click for Configuration.")
-    end,
+		end
+	end,
+	OnTooltipShow = function(tooltip)
+		if not tooltip or not tooltip.AddLine then return end
+		tooltip:AddLine("RGS - Rhodan's Graphical Settings")
+		tooltip:AddLine("Left/Right click for Configuration.")
+	end,
 })
 
 
@@ -71,19 +71,19 @@ RGS.dataBroker = ldb:NewDataObject("RGS", {
 -- RGS.MinimapButton:EnableMouse(true)
 
 -- RGS.MinimapButton:SetScript("OnDragStart", function(self)
-    -- self:StartMoving()
+	-- self:StartMoving()
 -- end)
 
 -- RGS.MinimapButton:SetScript("OnDragStop", function(self)
-    -- self:StopMovingOrSizing()
+	-- self:StopMovingOrSizing()
 -- end)
 
 -- RGS.MinimapButton:RegisterForDrag("LeftButton")
 
 -- -- Tooltip scripts
 -- RGS.MinimapButton:SetScript("OnEnter", function(self)
-    -- GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-    -- GameTooltip:SetText("RGS - Rhodan's Graphical Settings", 1, 1, 1)
-    -- GameTooltip:AddLine("Left-click for configuration.", 0.8, 0.8, 0.8, true)
-    -- GameTooltip:Show()
+	-- GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+	-- GameTooltip:SetText("RGS - Rhodan's Graphical Settings", 1, 1, 1)
+	-- GameTooltip:AddLine("Left-click for configuration.", 0.8, 0.8, 0.8, true)
+	-- GameTooltip:Show()
 -- end)

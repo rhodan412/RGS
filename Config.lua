@@ -23,13 +23,13 @@ RGS.db.profile = RGS.db.profile or {}
 
 -- Inside your options table
 RGS.options = {
-    name = "Rhodan's Graphical Automation Settings",
-    type = "group",
-    args = {
-        solo = {
-            name = "Solo",
-            type = "group",
-            args = {
+	name = "Rhodan's Graphical Automation Settings",
+	type = "group",
+	args = {
+		solo = {
+			name = "Solo",
+			type = "group",
+			args = {
 				updateSettingsButton = {
 					type = "execute",
 					name = "Update Settings",
@@ -37,9 +37,9 @@ RGS.options = {
 					order = 1,  -- Adjust the order to place the button correctly in the list
 					func = function() RGS:UpdateProfileWithCurrentSettings("solo") end,
 				},
-                shadowQuality = {
-                    type = "select",
-                    name = "Shadow Quality",
+				shadowQuality = {
+					type = "select",
+					name = "Shadow Quality",
 					desc = "Controls both the method and quality of shadows. Decreasing this may greatly improve performance.\n\n" ..
 						   "Ultra High: High-resolution environment and unit soft shadows, very far distance.\n\n" ..
 						   "High: High-resolution environment and unit soft shadows, far distance.\n\n" ..
@@ -56,14 +56,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.solo.shadowQuality end,
+					get = function(info) return RGS.db.profile.solo.shadowQuality end,
 					set = function(info, value)
 						RGS.db.profile.solo.shadowQuality = value						
 					end,
-                },
-                liquidDetail = {
-                    type = "select",
-                    name = "Liquid Detail",
+				},
+				liquidDetail = {
+					type = "select",
+					name = "Liquid Detail",
 					desc = "Controls the rendering quality of liquids. Decreasing this may improve performance.\n\n" ..
 						   "Ultra-High: Maximum map liquid textures, procedural ripples, and full reflection.\n\n" ..
 						   "High: Normal map liquid textures, procedural ripples, and screen-based reflection.\n\n" ..
@@ -77,14 +77,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.solo.liquidDetail end,
+					get = function(info) return RGS.db.profile.solo.liquidDetail end,
 					set = function(info, value)
 						RGS.db.profile.solo.liquidDetail = value						
 					end,
-                },
-                particleDensity = {
-                    type = "select",
-                    name = "Particle Density",
+				},
+				particleDensity = {
+					type = "select",
+					name = "Particle Density",
 					desc = "Controls the number of particles used in effects caused by spells, fires, etc. Decrease to improve performance.",
 					order = 4,
 					values = {
@@ -95,14 +95,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.solo.particleDensity end,
+					get = function(info) return RGS.db.profile.solo.particleDensity end,
 					set = function(info, value)
 						RGS.db.profile.solo.particleDensity = value						
 					end,
-                },
-                SSAOSetting = {
-                    type = "select",
-                    name = "SSAO",
+				},
+				SSAOSetting = {
+					type = "select",
+					name = "SSAO",
 					desc = "Controls the rendering quality of the advanced lighting effects. Decreasing this may greatly improve performance.",
 					order = 5,
 					values = {
@@ -112,14 +112,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.solo.SSAOSetting end,
+					get = function(info) return RGS.db.profile.solo.SSAOSetting end,
 					set = function(info, value)
 						RGS.db.profile.solo.SSAOSetting = value						
 					end,
-                },
-                depthEffects = {
-                    type = "select",
-                    name = "Depth Effects",
+				},
+				depthEffects = {
+					type = "select",
+					name = "Depth Effects",
 					desc = "Controls the rendering of depth-based particle effects. Decreasing this may improve performance.\n\n" ..
 						   "High: Particle depth fading and full-resolution refraction. Depth-based sunshafts and glare with improved sampling.\n\n" ..
 						   "Good: Particle depth fading and low-resolution refraction. Depth-based sunshafts and glare.\n\n" ..
@@ -132,14 +132,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.solo.depthEffects end,
+					get = function(info) return RGS.db.profile.solo.depthEffects end,
 					set = function(info, value)
 						RGS.db.profile.solo.depthEffects = value						
 					end,
-                },
-                computeEffects = {
-                    type = "select",
-                    name = "Compute Effects",
+				},
+				computeEffects = {
+					type = "select",
+					name = "Compute Effects",
 					desc = "Controls the quality of Compute-based effects such as Volumetric Fog and some particle effects. " ..
 						   "Compute-based effects may be more expensive for older graphics cards.\n\n" ..
 						   "Disabled: Volume fog disabled, compute-based particle collision disabled.\n\n" ..
@@ -155,14 +155,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.solo.computeEffects end,
+					get = function(info) return RGS.db.profile.solo.computeEffects end,
 					set = function(info, value)
 						RGS.db.profile.solo.computeEffects = value
 					end,
-                },
-                textureResolution = {
-                    type = "select",
-                    name = "Texture Resolution",
+				},
+				textureResolution = {
+					type = "select",
+					name = "Texture Resolution",
 					desc = "Controls the level of all texture detail. Decreasing this may slightly improve performance.\n\n" ..
 						   "High: High-resolution environment textures, high-detail terrain blending, and high-resolution character textures.\n\n" ..
 						   "Fair: Medium-resolution environment textures, low-detail terrain blending, and low-resolution character textures.\n\n" ..
@@ -174,14 +174,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.solo.textureResolution end,
+					get = function(info) return RGS.db.profile.solo.textureResolution end,
 					set = function(info, value)
 						RGS.db.profile.solo.textureResolution = value
 					end,
-                },
-                spellDensity = {
-                    type = "select",
-                    name = "Spell Density",
+				},
+				spellDensity = {
+					type = "select",
+					name = "Spell Density",
 					desc = "Controls visibility of non-essential spells. Helps manage visual clutter and performance during combat.\n\n" ..
 						   "Essential: Only show essential spells. Your own spells are always shown.\n\n" ..
 						   "Some: Reduce non-essential spells shown by around 75%.\n\n" ..
@@ -197,28 +197,28 @@ RGS.options = {
 						[4] = "Dynamic",
 						[5] = "Everything"
 					},
-                    get = function(info) return RGS.db.profile.solo.spellDensity end,
+					get = function(info) return RGS.db.profile.solo.spellDensity end,
 					set = function(info, value)
 						RGS.db.profile.solo.spellDensity = value						
 					end,
-                },
-                projectedTextures = {
-                    type = "select",
-                    name = "Projected Textures",
+				},
+				projectedTextures = {
+					type = "select",
+					name = "Projected Textures",
 					desc = "Enables the projecting of textures to the environment. Disabling this may improve performance.",
 					order = 10,
 					values = {
 						[1] = "Enabled",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.solo.projectedTextures end,
+					get = function(info) return RGS.db.profile.solo.projectedTextures end,
 					set = function(info, value)
 						RGS.db.profile.solo.projectedTextures = value						
 					end,
-                },
-                textureFilteringMode = {
-                    type = "select",
-                    name = "Texture Filtering Mode",
+				},
+				textureFilteringMode = {
+					type = "select",
+					name = "Texture Filtering Mode",
 					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
 					order = 11,
 					values = {
@@ -229,53 +229,53 @@ RGS.options = {
 						[1] = "Trilinear",
 						[0] = "Bilinear"
 					},
-                    get = function(info) return RGS.db.profile.solo.textureFilteringMode end,
+					get = function(info) return RGS.db.profile.solo.textureFilteringMode end,
 					set = function(info, value)
 						RGS.db.profile.solo.textureFilteringMode = value						
 					end,
-                },
-                viewDistance = {
-                    type = "range",
-                    name = "View Distance",
+				},
+				viewDistance = {
+					type = "range",
+					name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
 					order = 12,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.solo.viewDistance end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.solo.viewDistance end,
 					set = function(info, value)
 						RGS.db.profile.solo.viewDistance = value						
 					end,
-                },
-                environmentDetail = {
-                    type = "range",
-                    name = "Environment Detail",
+				},
+				environmentDetail = {
+					type = "range",
+					name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
 					order = 13,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.solo.environmentDetail end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.solo.environmentDetail end,
 					set = function(info, value)
 						RGS.db.profile.solo.environmentDetail = value						
 					end,
-                },
-                groundClutter = {
-                    type = "range",
-                    name = "Ground Clutter",
+				},
+				groundClutter = {
+					type = "range",
+					name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
 					order = 14,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.solo.groundClutter end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.solo.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.solo.groundClutter = value						
 					end,
-                },
-                shadowRT = {
-                    type = "select",
-                    name = "Raytraced Shadows",
+				},
+				shadowRT = {
+					type = "select",
+					name = "Raytraced Shadows",
 					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
 						   "This feature requires:\n" ..
 						   "A hardware ray tracing capable graphics card\n" ..
@@ -291,14 +291,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.solo.shadowRT end,
+					get = function(info) return RGS.db.profile.solo.shadowRT end,
 					set = function(info, value)
 						RGS.db.profile.solo.shadowRT = value						
 					end,
-                },
-                sunShafts = {
-                    type = "select",
-                    name = "Sun Shafts",
+				},
+				sunShafts = {
+					type = "select",
+					name = "Sun Shafts",
 					--desc = "",
 					order = 16,
 					values = {
@@ -306,17 +306,17 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.solo.sunShafts end,
+					get = function(info) return RGS.db.profile.solo.sunShafts end,
 					set = function(info, value)
 						RGS.db.profile.solo.sunShafts = value						
 					end,
-                },
-            },
-        },
-        scenario = {
-            name = "Scenario",
-            type = "group",
-            args = {
+				},
+			},
+		},
+		scenario = {
+			name = "Scenario",
+			type = "group",
+			args = {
 				updateSettingsButton = {
 					type = "execute",
 					name = "Update Settings",
@@ -324,9 +324,9 @@ RGS.options = {
 					order = 1,  -- Adjust the order to place the button correctly in the list
 					func = function() RGS:UpdateProfileWithCurrentSettings("scenario") end,
 				},
-                shadowQuality = {
-                    type = "select",
-                    name = "Shadow Quality",
+				shadowQuality = {
+					type = "select",
+					name = "Shadow Quality",
 					desc = "Controls both the method and quality of shadows. Decreasing this may greatly improve performance.\n\n" ..
 						   "Ultra High: High-resolution environment and unit soft shadows, very far distance.\n\n" ..
 						   "High: High-resolution environment and unit soft shadows, far distance.\n\n" ..
@@ -343,14 +343,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.scenario.shadowQuality end,
+					get = function(info) return RGS.db.profile.scenario.shadowQuality end,
 					set = function(info, value)
 						RGS.db.profile.scenario.shadowQuality = value					
 					end,
-                },
-                liquidDetail = {
-                    type = "select",
-                    name = "Liquid Detail",
+				},
+				liquidDetail = {
+					type = "select",
+					name = "Liquid Detail",
 					desc = "Controls the rendering quality of liquids. Decreasing this may improve performance.\n\n" ..
 						   "Ultra-High: Maximum map liquid textures, procedural ripples, and full reflection.\n\n" ..
 						   "High: Normal map liquid textures, procedural ripples, and screen-based reflection.\n\n" ..
@@ -364,14 +364,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.scenario.liquidDetail end,
+					get = function(info) return RGS.db.profile.scenario.liquidDetail end,
 					set = function(info, value)
 						RGS.db.profile.scenario.liquidDetail = value						
 					end,
-                },
-                particleDensity = {
-                    type = "select",
-                    name = "Particle Density",
+				},
+				particleDensity = {
+					type = "select",
+					name = "Particle Density",
 					desc = "Controls the number of particles used in effects caused by spells, fires, etc. Decrease to improve performance.",
 					order = 4,
 					values = {
@@ -382,14 +382,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.scenario.particleDensity end,
+					get = function(info) return RGS.db.profile.scenario.particleDensity end,
 					set = function(info, value)
 						RGS.db.profile.scenario.particleDensity = value						
 					end,
-                },
-                SSAOSetting = {
-                    type = "select",
-                    name = "SSAO",
+				},
+				SSAOSetting = {
+					type = "select",
+					name = "SSAO",
 					desc = "Controls the rendering quality of the advanced lighting effects. Decreasing this may greatly improve performance.",
 					order = 5,
 					values = {
@@ -399,14 +399,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.scenario.SSAOSetting end,
+					get = function(info) return RGS.db.profile.scenario.SSAOSetting end,
 					set = function(info, value)
 						RGS.db.profile.scenario.SSAOSetting = value						
 					end,
-                },
-                depthEffects = {
-                    type = "select",
-                    name = "Depth Effects",
+				},
+				depthEffects = {
+					type = "select",
+					name = "Depth Effects",
 					desc = "Controls the rendering of depth-based particle effects. Decreasing this may improve performance.\n\n" ..
 						   "High: Particle depth fading and full-resolution refraction. Depth-based sunshafts and glare with improved sampling.\n\n" ..
 						   "Good: Particle depth fading and low-resolution refraction. Depth-based sunshafts and glare.\n\n" ..
@@ -419,14 +419,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.scenario.depthEffects end,
+					get = function(info) return RGS.db.profile.scenario.depthEffects end,
 					set = function(info, value)
 						RGS.db.profile.scenario.depthEffects = value						
 					end,
-                },
-                computeEffects = {
-                    type = "select",
-                    name = "Compute Effects",
+				},
+				computeEffects = {
+					type = "select",
+					name = "Compute Effects",
 					desc = "Controls the quality of Compute-based effects such as Volumetric Fog and some particle effects. " ..
 						   "Compute-based effects may be more expensive for older graphics cards.\n\n" ..
 						   "Disabled: Volume fog disabled, compute-based particle collision disabled.\n\n" ..
@@ -442,14 +442,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.scenario.computeEffects end,
+					get = function(info) return RGS.db.profile.scenario.computeEffects end,
 					set = function(info, value)
 						RGS.db.profile.scenario.computeEffects = value
 					end,
-                },
-                textureResolution = {
-                    type = "select",
-                    name = "Texture Resolution",
+				},
+				textureResolution = {
+					type = "select",
+					name = "Texture Resolution",
 					desc = "Controls the level of all texture detail. Decreasing this may slightly improve performance.\n\n" ..
 						   "High: High-resolution environment textures, high-detail terrain blending, and high-resolution character textures.\n\n" ..
 						   "Fair: Medium-resolution environment textures, low-detail terrain blending, and low-resolution character textures.\n\n" ..
@@ -461,14 +461,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.scenario.textureResolution end,
+					get = function(info) return RGS.db.profile.scenario.textureResolution end,
 					set = function(info, value)
 						RGS.db.profile.scenario.textureResolution = value
 					end,
-                },
-                spellDensity = {
-                    type = "select",
-                    name = "Spell Density",
+				},
+				spellDensity = {
+					type = "select",
+					name = "Spell Density",
 					desc = "Controls visibility of non-essential spells. Helps manage visual clutter and performance during combat.\n\n" ..
 						   "Essential: Only show essential spells. Your own spells are always shown.\n\n" ..
 						   "Some: Reduce non-essential spells shown by around 75%.\n\n" ..
@@ -484,28 +484,28 @@ RGS.options = {
 						[4] = "Dynamic",
 						[5] = "Everything"
 					},
-                    get = function(info) return RGS.db.profile.scenario.spellDensity end,
+					get = function(info) return RGS.db.profile.scenario.spellDensity end,
 					set = function(info, value)
 						RGS.db.profile.scenario.spellDensity = value						
 					end,
-                },
-                projectedTextures = {
-                    type = "select",
-                    name = "Projected Textures",
+				},
+				projectedTextures = {
+					type = "select",
+					name = "Projected Textures",
 					desc = "Enables the projecting of textures to the environment. Disabling this may improve performance.",
 					order = 10,
 					values = {
 						[1] = "Enabled",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.scenario.projectedTextures end,
+					get = function(info) return RGS.db.profile.scenario.projectedTextures end,
 					set = function(info, value)
 						RGS.db.profile.scenario.projectedTextures = value
 					end,
-                },
-                textureFilteringMode = {
-                    type = "select",
-                    name = "Texture Filtering Mode",
+				},
+				textureFilteringMode = {
+					type = "select",
+					name = "Texture Filtering Mode",
 					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
 					order = 11,
 					values = {
@@ -516,53 +516,53 @@ RGS.options = {
 						[1] = "Trilinear",
 						[0] = "Bilinear"
 					},
-                    get = function(info) return RGS.db.profile.scenario.textureFilteringMode end,
+					get = function(info) return RGS.db.profile.scenario.textureFilteringMode end,
 					set = function(info, value)
 						RGS.db.profile.scenario.textureFilteringMode = value
 					end,
-                },
-                viewDistance = {
-                    type = "range",
-                    name = "View Distance",
+				},
+				viewDistance = {
+					type = "range",
+					name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
 					order = 12,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.scenario.viewDistance end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.scenario.viewDistance end,
 					set = function(info, value)
 						RGS.db.profile.scenario.viewDistance = value
 					end,
-                },
-                environmentDetail = {
-                    type = "range",
-                    name = "Environment Detail",
+				},
+				environmentDetail = {
+					type = "range",
+					name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
 					order = 13,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.scenario.environmentDetail end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.scenario.environmentDetail end,
 					set = function(info, value)
 						RGS.db.profile.scenario.environmentDetail = value
 					end,
-                },
-                groundClutter = {
-                    type = "range",
-                    name = "Ground Clutter",
+				},
+				groundClutter = {
+					type = "range",
+					name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
 					order = 14,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.scenario.groundClutter end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.scenario.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.scenario.groundClutter = value
 					end,
-                },
-                shadowRT = {
-                    type = "select",
-                    name = "Raytraced Shadows",
+				},
+				shadowRT = {
+					type = "select",
+					name = "Raytraced Shadows",
 					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
 						   "This feature requires:\n" ..
 						   "A hardware ray tracing capable graphics card\n" ..
@@ -578,14 +578,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.scenario.shadowRT end,
+					get = function(info) return RGS.db.profile.scenario.shadowRT end,
 					set = function(info, value)
 						RGS.db.profile.scenario.shadowRT = value
 					end,
-                },
-                sunShafts = {
-                    type = "select",
-                    name = "Sun Shafts",
+				},
+				sunShafts = {
+					type = "select",
+					name = "Sun Shafts",
 					--desc = "",
 					order = 16,
 					values = {
@@ -593,18 +593,18 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.scenario.sunShafts end,
+					get = function(info) return RGS.db.profile.scenario.sunShafts end,
 					set = function(info, value)
 						RGS.db.profile.scenario.sunShafts = value
 					end,
-                },
-            },
-        },
-        group = {
-            name = "Group",
-            type = "group",
+				},
+			},
+		},
+		group = {
+			name = "Group",
+			type = "group",
 			order = 2,
-            args = {
+			args = {
 				updateSettingsButton = {
 					type = "execute",
 					name = "Update Settings",
@@ -612,9 +612,9 @@ RGS.options = {
 					order = 1,  -- Adjust the order to place the button correctly in the list
 					func = function() RGS:UpdateProfileWithCurrentSettings("group") end,
 				},
-                shadowQuality = {
-                    type = "select",
-                    name = "Shadow Quality",
+				shadowQuality = {
+					type = "select",
+					name = "Shadow Quality",
 					desc = "Controls both the method and quality of shadows. Decreasing this may greatly improve performance.\n\n" ..
 						   "Ultra High: High-resolution environment and unit soft shadows, very far distance.\n\n" ..
 						   "High: High-resolution environment and unit soft shadows, far distance.\n\n" ..
@@ -631,14 +631,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.group.shadowQuality end,
+					get = function(info) return RGS.db.profile.group.shadowQuality end,
 					set = function(info, value)
 						RGS.db.profile.group.shadowQuality = value
 					end,
-                },
-                liquidDetail = {
-                    type = "select",
-                    name = "Liquid Detail",
+				},
+				liquidDetail = {
+					type = "select",
+					name = "Liquid Detail",
 					desc = "Controls the rendering quality of liquids. Decreasing this may improve performance.\n\n" ..
 						   "Ultra-High: Maximum map liquid textures, procedural ripples, and full reflection.\n\n" ..
 						   "High: Normal map liquid textures, procedural ripples, and screen-based reflection.\n\n" ..
@@ -652,14 +652,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.group.liquidDetail end,
+					get = function(info) return RGS.db.profile.group.liquidDetail end,
 					set = function(info, value)
 						RGS.db.profile.group.liquidDetail = value
 					end,
-                },
-                particleDensity = {
-                    type = "select",
-                    name = "Particle Density",
+				},
+				particleDensity = {
+					type = "select",
+					name = "Particle Density",
 					desc = "Controls the number of particles used in effects caused by spells, fires, etc. Decrease to improve performance.",
 					order = 4,
 					values = {
@@ -670,14 +670,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.group.particleDensity end,
+					get = function(info) return RGS.db.profile.group.particleDensity end,
 					set = function(info, value)
 						RGS.db.profile.group.particleDensity = value
 					end,
-                },
-                SSAOSetting = {
-                    type = "select",
-                    name = "SSAO",
+				},
+				SSAOSetting = {
+					type = "select",
+					name = "SSAO",
 					desc = "Controls the rendering quality of the advanced lighting effects. Decreasing this may greatly improve performance.",
 					order = 5,
 					values = {
@@ -687,14 +687,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.group.SSAOSetting end,
+					get = function(info) return RGS.db.profile.group.SSAOSetting end,
 					set = function(info, value)
 						RGS.db.profile.group.SSAOSetting = value
 					end,
-                },
-                depthEffects = {
-                    type = "select",
-                    name = "Depth Effects",
+				},
+				depthEffects = {
+					type = "select",
+					name = "Depth Effects",
 					desc = "Controls the rendering of depth-based particle effects. Decreasing this may improve performance.\n\n" ..
 						   "High: Particle depth fading and full-resolution refraction. Depth-based sunshafts and glare with improved sampling.\n\n" ..
 						   "Good: Particle depth fading and low-resolution refraction. Depth-based sunshafts and glare.\n\n" ..
@@ -707,14 +707,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.group.depthEffects end,
+					get = function(info) return RGS.db.profile.group.depthEffects end,
 					set = function(info, value)
 						RGS.db.profile.group.depthEffects = value
 					end,
-                },
-                computeEffects = {
-                    type = "select",
-                    name = "Compute Effects",
+				},
+				computeEffects = {
+					type = "select",
+					name = "Compute Effects",
 					desc = "Controls the quality of Compute-based effects such as Volumetric Fog and some particle effects. " ..
 						   "Compute-based effects may be more expensive for older graphics cards.\n\n" ..
 						   "Disabled: Volume fog disabled, compute-based particle collision disabled.\n\n" ..
@@ -730,14 +730,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.group.computeEffects end,
+					get = function(info) return RGS.db.profile.group.computeEffects end,
 					set = function(info, value)
 						RGS.db.profile.group.computeEffects = value
 					end,
-                },
-                textureResolution = {
-                    type = "select",
-                    name = "Texture Resolution",
+				},
+				textureResolution = {
+					type = "select",
+					name = "Texture Resolution",
 					desc = "Controls the level of all texture detail. Decreasing this may slightly improve performance.\n\n" ..
 						   "High: High-resolution environment textures, high-detail terrain blending, and high-resolution character textures.\n\n" ..
 						   "Fair: Medium-resolution environment textures, low-detail terrain blending, and low-resolution character textures.\n\n" ..
@@ -749,14 +749,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.group.textureResolution end,
+					get = function(info) return RGS.db.profile.group.textureResolution end,
 					set = function(info, value)
 						RGS.db.profile.group.textureResolution = value
 					end,
-                },
-                spellDensity = {
-                    type = "select",
-                    name = "Spell Density",
+				},
+				spellDensity = {
+					type = "select",
+					name = "Spell Density",
 					desc = "Controls visibility of non-essential spells. Helps manage visual clutter and performance during combat.\n\n" ..
 						   "Essential: Only show essential spells. Your own spells are always shown.\n\n" ..
 						   "Some: Reduce non-essential spells shown by around 75%.\n\n" ..
@@ -772,14 +772,14 @@ RGS.options = {
 						[4] = "Dynamic",
 						[5] = "Everything"
 					},
-                    get = function(info) return RGS.db.profile.group.spellDensity end,
+					get = function(info) return RGS.db.profile.group.spellDensity end,
 					set = function(info, value)
 						RGS.db.profile.group.spellDensity = value
 					end,
-                },
-                textureFilteringMode = {
-                    type = "select",
-                    name = "Texture Filtering Mode",
+				},
+				textureFilteringMode = {
+					type = "select",
+					name = "Texture Filtering Mode",
 					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
 					order = 11,
 					values = {
@@ -790,67 +790,67 @@ RGS.options = {
 						[1] = "Trilinear",
 						[0] = "Bilinear"
 					},
-                    get = function(info) return RGS.db.profile.group.textureFilteringMode end,
+					get = function(info) return RGS.db.profile.group.textureFilteringMode end,
 					set = function(info, value)
 						RGS.db.profile.group.textureFilteringMode = value
 					end,
-                },
-                projectedTextures = {
-                    type = "select",
-                    name = "Projected Textures",
+				},
+				projectedTextures = {
+					type = "select",
+					name = "Projected Textures",
 					desc = "Enables the projecting of textures to the environment. Disabling this may improve performance.",
 					order = 10,
 					values = {
 						[1] = "Enabled",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.group.projectedTextures end,
+					get = function(info) return RGS.db.profile.group.projectedTextures end,
 					set = function(info, value)
 						RGS.db.profile.group.projectedTextures = value
 					end,
-                },
-                viewDistance = {
-                    type = "range",
-                    name = "View Distance",
+				},
+				viewDistance = {
+					type = "range",
+					name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
 					order = 12,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.group.viewDistance end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.group.viewDistance end,
 					set = function(info, value)
 						RGS.db.profile.group.viewDistance = value
 					end,
-                },
-                environmentDetail = {
-                    type = "range",
-                    name = "Environment Detail",
+				},
+				environmentDetail = {
+					type = "range",
+					name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
 					order = 13,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.group.environmentDetail end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.group.environmentDetail end,
 					set = function(info, value)
 						RGS.db.profile.group.environmentDetail = value
 					end,
-                },
-                groundClutter = {
-                    type = "range",
-                    name = "Ground Clutter",
+				},
+				groundClutter = {
+					type = "range",
+					name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
 					order = 14,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.group.groundClutter end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.group.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.group.groundClutter = value						
 					end,
-                },
-                shadowRT = {
-                    type = "select",
-                    name = "Raytraced Shadows",
+				},
+				shadowRT = {
+					type = "select",
+					name = "Raytraced Shadows",
 					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
 						   "This feature requires:\n" ..
 						   "A hardware ray tracing capable graphics card\n" ..
@@ -866,14 +866,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.group.shadowRT end,
+					get = function(info) return RGS.db.profile.group.shadowRT end,
 					set = function(info, value)
 						RGS.db.profile.group.shadowRT = value						
 					end,
-                },
-                sunShafts = {
-                    type = "select",
-                    name = "Sun Shafts",
+				},
+				sunShafts = {
+					type = "select",
+					name = "Sun Shafts",
 					--desc = "",
 					order = 16,
 					values = {
@@ -881,18 +881,18 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.group.sunShafts end,
+					get = function(info) return RGS.db.profile.group.sunShafts end,
 					set = function(info, value)
 						RGS.db.profile.group.sunShafts = value						
 					end,
-                },
-            },
-        },
-        raid = {
-            name = "Raid",
-            type = "group",
+				},
+			},
+		},
+		raid = {
+			name = "Raid",
+			type = "group",
 			order = 3,
-            args = {
+			args = {
 				updateSettingsButton = {
 					type = "execute",
 					name = "Update Settings",
@@ -900,9 +900,9 @@ RGS.options = {
 					order = 1,  -- Adjust the order to place the button correctly in the list
 					func = function() RGS:UpdateProfileWithCurrentSettings("raid") end,
 				},
-                shadowQuality = {
-                    type = "select",
-                    name = "Shadow Quality",
+				shadowQuality = {
+					type = "select",
+					name = "Shadow Quality",
 					desc = "Controls both the method and quality of shadows. Decreasing this may greatly improve performance.\n\n" ..
 						   "Ultra High: High-resolution environment and unit soft shadows, very far distance.\n\n" ..
 						   "High: High-resolution environment and unit soft shadows, far distance.\n\n" ..
@@ -919,14 +919,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.raid.shadowQuality end,
+					get = function(info) return RGS.db.profile.raid.shadowQuality end,
 					set = function(info, value)
 						RGS.db.profile.raid.shadowQuality = value						
 					end,
-                },
-                liquidDetail = {
-                    type = "select",
-                    name = "Liquid Detail",
+				},
+				liquidDetail = {
+					type = "select",
+					name = "Liquid Detail",
 					desc = "Controls the rendering quality of liquids. Decreasing this may improve performance.\n\n" ..
 						   "Ultra-High: Maximum map liquid textures, procedural ripples, and full reflection.\n\n" ..
 						   "High: Normal map liquid textures, procedural ripples, and screen-based reflection.\n\n" ..
@@ -940,14 +940,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.raid.liquidDetail end,
+					get = function(info) return RGS.db.profile.raid.liquidDetail end,
 					set = function(info, value)
 						RGS.db.profile.raid.liquidDetail = value						
 					end,
-                },
-                particleDensity = {
-                    type = "select",
-                    name = "Particle Density",
+				},
+				particleDensity = {
+					type = "select",
+					name = "Particle Density",
 					desc = "Controls the number of particles used in effects caused by spells, fires, etc. Decrease to improve performance.",
 					order = 4,
 					values = {
@@ -958,14 +958,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.raid.particleDensity end,
+					get = function(info) return RGS.db.profile.raid.particleDensity end,
 					set = function(info, value)
 						RGS.db.profile.raid.particleDensity = value						
 					end,
-                },
-                SSAOSetting = {
-                    type = "select",
-                    name = "SSAO",
+				},
+				SSAOSetting = {
+					type = "select",
+					name = "SSAO",
 					desc = "Controls the rendering quality of the advanced lighting effects. Decreasing this may greatly improve performance.",
 					order = 5,
 					values = {
@@ -975,14 +975,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.raid.SSAOSetting end,
+					get = function(info) return RGS.db.profile.raid.SSAOSetting end,
 					set = function(info, value)
 						RGS.db.profile.raid.SSAOSetting = value						
 					end,
-                },
-                depthEffects = {
-                    type = "select",
-                    name = "Depth Effects",
+				},
+				depthEffects = {
+					type = "select",
+					name = "Depth Effects",
 					desc = "Controls the rendering of depth-based particle effects. Decreasing this may improve performance.\n\n" ..
 						   "High: Particle depth fading and full-resolution refraction. Depth-based sunshafts and glare with improved sampling.\n\n" ..
 						   "Good: Particle depth fading and low-resolution refraction. Depth-based sunshafts and glare.\n\n" ..
@@ -995,14 +995,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.raid.depthEffects end,
+					get = function(info) return RGS.db.profile.raid.depthEffects end,
 					set = function(info, value)
 						RGS.db.profile.raid.depthEffects = value						
 					end,
-                },
-                computeEffects = {
-                    type = "select",
-                    name = "Compute Effects",
+				},
+				computeEffects = {
+					type = "select",
+					name = "Compute Effects",
 					desc = "Controls the quality of Compute-based effects such as Volumetric Fog and some particle effects. " ..
 						   "Compute-based effects may be more expensive for older graphics cards.\n\n" ..
 						   "Disabled: Volume fog disabled, compute-based particle collision disabled.\n\n" ..
@@ -1018,14 +1018,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.raid.computeEffects end,
+					get = function(info) return RGS.db.profile.raid.computeEffects end,
 					set = function(info, value)
 						RGS.db.profile.raid.computeEffects = value						
 					end,
-                },
-                textureResolution = {
-                    type = "select",
-                    name = "Texture Resolution",
+				},
+				textureResolution = {
+					type = "select",
+					name = "Texture Resolution",
 					desc = "Controls the level of all texture detail. Decreasing this may slightly improve performance.\n\n" ..
 						   "High: High-resolution environment textures, high-detail terrain blending, and high-resolution character textures.\n\n" ..
 						   "Fair: Medium-resolution environment textures, low-detail terrain blending, and low-resolution character textures.\n\n" ..
@@ -1037,14 +1037,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Low"
 					},
-                    get = function(info) return RGS.db.profile.raid.textureResolution end,
+					get = function(info) return RGS.db.profile.raid.textureResolution end,
 					set = function(info, value)
 						RGS.db.profile.raid.textureResolution = value						
 					end,
-                },
-                textureFilteringMode = {
-                    type = "select",
-                    name = "Texture Filtering Mode",
+				},
+				textureFilteringMode = {
+					type = "select",
+					name = "Texture Filtering Mode",
 					desc = "Increases texture sharpness, particularly for textures viewed at an angle.",
 					order = 11,
 					values = {
@@ -1055,14 +1055,14 @@ RGS.options = {
 						[1] = "Trilinear",
 						[0] = "Bilinear"
 					},
-                    get = function(info) return RGS.db.profile.raid.textureFilteringMode end,
+					get = function(info) return RGS.db.profile.raid.textureFilteringMode end,
 					set = function(info, value)
 						RGS.db.profile.raid.textureFilteringMode = value						
 					end,
-                },
-                spellDensity = {
-                    type = "select",
-                    name = "Spell Density",
+				},
+				spellDensity = {
+					type = "select",
+					name = "Spell Density",
 					desc = "Controls visibility of non-essential spells. Helps manage visual clutter and performance during combat.\n\n" ..
 						   "Essential: Only show essential spells. Your own spells are always shown.\n\n" ..
 						   "Some: Reduce non-essential spells shown by around 75%.\n\n" ..
@@ -1078,67 +1078,67 @@ RGS.options = {
 						[4] = "Dynamic",
 						[5] = "Everything"
 					},
-                    get = function(info) return RGS.db.profile.raid.spellDensity end,
+					get = function(info) return RGS.db.profile.raid.spellDensity end,
 					set = function(info, value)
 						RGS.db.profile.raid.spellDensity = value						
 					end,
-                },
-                projectedTextures = {
-                    type = "select",
-                    name = "Projected Textures",
+				},
+				projectedTextures = {
+					type = "select",
+					name = "Projected Textures",
 					desc = "Enables the projecting of textures to the environment. Disabling this may improve performance.",
 					order = 10,
 					values = {
 						[1] = "Enabled",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.raid.projectedTextures end,
+					get = function(info) return RGS.db.profile.raid.projectedTextures end,
 					set = function(info, value)
 						RGS.db.profile.raid.projectedTextures = value						
 					end,
-                },
-                viewDistance = {
-                    type = "range",
-                    name = "View Distance",
+				},
+				viewDistance = {
+					type = "range",
+					name = "View Distance",
 					desc = "View distance controls how far you can see. Larger view distances require more memory and a faster processor.",
 					order = 12,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.raid.viewDistance end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.raid.viewDistance end,
 					set = function(info, value)
 						RGS.db.profile.raid.viewDistance = value						
 					end,
-                },
-                environmentDetail = {
-                    type = "range",
-                    name = "Environment Detail",
+				},
+				environmentDetail = {
+					type = "range",
+					name = "Environment Detail",
 					desc = "Controls how far you can see objects. Decrease to improve performance.",
 					order = 13,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.raid.environmentDetail end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.raid.environmentDetail end,
 					set = function(info, value)
 						RGS.db.profile.raid.environmentDetail = value						
 					end,
-                },
-                groundClutter = {
-                    type = "range",
-                    name = "Ground Clutter",
+				},
+				groundClutter = {
+					type = "range",
+					name = "Ground Clutter",
 					desc = "Controls the density and the distance at which ground clutter items, like grass and foilage, are placed. Decrease to improve performance.",
 					order = 14,
-                    min = 1,
-                    max = 10,
-                    step = 1,
-                    get = function(info) return RGS.db.profile.raid.groundClutter end,
+					min = 1,
+					max = 10,
+					step = 1,
+					get = function(info) return RGS.db.profile.raid.groundClutter end,
 					set = function(info, value)
 						RGS.db.profile.raid.groundClutter = value						
 					end,
-                },
-                shadowRT = {
-                    type = "select",
-                    name = "Raytraced Shadows",
+				},
+				shadowRT = {
+					type = "select",
+					name = "Raytraced Shadows",
 					desc = "Improves shadow quality with ray tracing, which produces shadows with more nature softness, greatly increased precision and from additional light sources.\n\n" ..
 						   "This feature requires:\n" ..
 						   "A hardware ray tracing capable graphics card\n" ..
@@ -1154,14 +1154,14 @@ RGS.options = {
 						[1] = "Fair",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.raid.shadowRT end,
+					get = function(info) return RGS.db.profile.raid.shadowRT end,
 					set = function(info, value)
 						RGS.db.profile.raid.shadowRT = value
 					end,
-                },
-                sunShafts = {
-                    type = "select",
-                    name = "Sun Shafts",
+				},
+				sunShafts = {
+					type = "select",
+					name = "Sun Shafts",
 					--desc = "",
 					order = 16,
 					values = {
@@ -1169,14 +1169,14 @@ RGS.options = {
 						[1] = "Low",
 						[0] = "Disabled"
 					},
-                    get = function(info) return RGS.db.profile.raid.sunShafts end,
+					get = function(info) return RGS.db.profile.raid.sunShafts end,
 					set = function(info, value)
 						RGS.db.profile.raid.sunShafts = value						
 					end,
-                },
-            },
-        },
-    },
+				},
+			},
+		},
+	},
 }
 
 
@@ -1185,6 +1185,6 @@ RGS.options = {
 ---------------------------
 
 function RGS:SetupOptions()
-    AceConfig:RegisterOptionsTable("RGS", RGS.options)
-    AceConfigDialog:AddToBlizOptions("RGS", "Rhodan's Graphical Settings")
+	AceConfig:RegisterOptionsTable("RGS", RGS.options)
+	AceConfigDialog:AddToBlizOptions("RGS", "Rhodan's Graphical Settings")
 end
