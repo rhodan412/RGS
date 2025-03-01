@@ -2,6 +2,7 @@
 
 	*HIGHLIGHTS*
 		- Ace3 Library Updates
+		- Added category information for addon (2025.03.01)
 
 	Ace3
 		- Library Updates
