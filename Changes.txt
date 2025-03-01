@@ -1,10 +1,15 @@
-11.0.7.2
+11.1.0.1 (2025-03-01)
 
 	*HIGHLIGHTS*
 		- Ace3 Library Updates
 
 	Ace3
 		- Library Updates
+
+	RGS.toc
+		- Updated version# (2025.03.01)
+		- Updated interface# (2025.03.01)
+		- Added category information for addon (2025.03.01)
 
 
 11.0.7.1 - TOC Update
