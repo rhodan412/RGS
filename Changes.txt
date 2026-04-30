@@ -1,3 +1,16 @@
+12.0.5.0 (2026-04-30)
+
+	*HIGHLIGHTS*
+		- Ace3 Library and TOC updates
+
+	Ace3
+		- Library Updates (2026.04.30)
+
+	RGS.toc
+		- Updated version# (2026.04.30)
+		- Updated interface# (2026.04.30)
+
+
 11.1.0.1 (2025-03-01)
 
 	*HIGHLIGHTS*
