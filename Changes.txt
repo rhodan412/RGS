@@ -1,3 +1,36 @@
+12.1.0.0 (2026-10-09)
+
+	*HIGHLIGHTS*
+		- Fixed the broker icon opening RGS settings in Retail.
+		- Graphics profiles now capture and apply the matching Base or Raid settings, with 1-10 sliders matching Blizzard's display.
+		- Added more profile controls for graphics quality, outline, resampling, VRS, frame limits, and display tuning.
+		- Added client manifests for Classic Season of Discovery, TBC Anniversary, and WoW Forever.
+
+	Config.lua
+		- Matched quality slider display to Blizzard's 1-10 scale, exposed supported graphics controls, and added explicit capture and apply actions for each context. (2026.10.09.0841)
+
+	Core.lua
+		- Rebuilt profile initialization and CVar capture/application around supported Base and Raid settings; removed overlapping delayed writes and corrected context selection. (2026.10.09.0841)
+
+	Events.lua
+		- Registered context and raid-bank events through AceEvent so the active profile updates on world, zone, group, scenario, and bank changes. (2026.10.09.0841)
+
+	RGS.toc
+		- Declared the 12.1.0 release and supported client interface versions. (2026.10.09.0841)
+
+	RGS_Camelot.toc
+		- Added the 1.60.1 WoW Forever client manifest with the shared RGS load order. (2026.10.09.0841)
+
+	RGS_TBC.toc
+		- Added the 2.5.6 TBC Anniversary client manifest with the shared RGS load order. (2026.10.09.0841)
+
+	RGS_Vanilla.toc
+		- Added the 1.15.9 Classic Season of Discovery client manifest with the shared RGS load order. (2026.10.09.0841)
+
+	RGSMinimap.lua
+		- Opened the registered settings category through the current Settings API with a Classic fallback and corrected click filtering. (2026.10.09.0841)
+
+
 12.0.5.0 (2026-04-30)
 
 	*HIGHLIGHTS*
