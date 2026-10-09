@@ -7,28 +7,28 @@
 		- Added client manifests for Classic Season of Discovery, TBC Anniversary, and WoW Forever.
 
 	Config.lua
-		- Matched quality slider display to Blizzard's 1-10 scale, exposed supported graphics controls, and added explicit capture and apply actions for each context. (2026.10.09.0841)
+		- Matched quality slider display to Blizzard's 1-10 scale, exposed supported graphics controls, and added explicit capture and apply actions for each context. (2026.10.09)
 
 	Core.lua
-		- Rebuilt profile initialization and CVar capture/application around supported Base and Raid settings; removed overlapping delayed writes and corrected context selection. (2026.10.09.0841)
+		- Rebuilt profile initialization and CVar capture/application around supported Base and Raid settings; removed overlapping delayed writes and corrected context selection. (2026.10.09)
 
 	Events.lua
-		- Registered context and raid-bank events through AceEvent so the active profile updates on world, zone, group, scenario, and bank changes. (2026.10.09.0841)
+		- Registered context and raid-bank events through AceEvent so the active profile updates on world, zone, group, scenario, and bank changes. (2026.10.09)
 
 	RGS.toc
-		- Declared the 12.1.0 release and supported client interface versions. (2026.10.09.0841)
+		- Declared the 12.1.0 release and supported client interface versions. (2026.10.09)
 
 	RGS_Camelot.toc
-		- Added the 1.60.1 WoW Forever client manifest with the shared RGS load order. (2026.10.09.0841)
+		- Added the 1.60.1 WoW Forever client manifest with the shared RGS load order. (2026.10.09)
 
 	RGS_TBC.toc
-		- Added the 2.5.6 TBC Anniversary client manifest with the shared RGS load order. (2026.10.09.0841)
+		- Added the 2.5.6 TBC Anniversary client manifest with the shared RGS load order. (2026.10.09)
 
 	RGS_Vanilla.toc
-		- Added the 1.15.9 Classic Season of Discovery client manifest with the shared RGS load order. (2026.10.09.0841)
+		- Added the 1.15.9 Classic Season of Discovery client manifest with the shared RGS load order. (2026.10.09)
 
 	RGSMinimap.lua
-		- Opened the registered settings category through the current Settings API with a Classic fallback and corrected click filtering. (2026.10.09.0841)
+		- Opened the registered settings category through the current Settings API with a Classic fallback and corrected click filtering. (2026.10.09)
 
 
 12.0.5.0 (2026-04-30)
