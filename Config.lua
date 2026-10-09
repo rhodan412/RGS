@@ -1180,11 +1180,109 @@ RGS.options = {
 }
 
 
----------------------------
--- 3. Setup Functions
----------------------------
+-- Keep the controls aligned with Blizzard's current CVar values. The game stores
+-- View Distance, Environment Detail and Ground Clutter as 0-9 but displays 1-10.
+local labels = {
+    outlineMode = { name = "Outline Mode", values = { [0] = "Disabled", [1] = "Good", [2] = "High" } },
+    resampleQuality = { name = "Resample Quality", values = { [0] = "Point", [1] = "Bilinear", [2] = "Bicubic", [3] = "FidelityFX Super Resolution 1.0" } },
+    vrsMode = { name = "VRS Mode", values = { [0] = "Disabled", [1] = "Standard", [2] = "Aggressive" } },
+}
 
-function RGS:SetupOptions()
-	AceConfig:RegisterOptionsTable("RGS", RGS.options)
-	AceConfigDialog:AddToBlizOptions("RGS", "Rhodan's Graphical Settings")
+local additionalRanges = {
+    resampleSharpness = { name = "Resample Sharpness", min = 0, max = 2, step = 0.1 },
+    contrast = { name = "Contrast", min = 0, max = 100, step = 1 },
+    brightness = { name = "Brightness", min = 0, max = 100, step = 1 },
+    gamma = { name = "Gamma", min = 0.3, max = 2.8, step = 0.1 },
+    maxFPS = { name = "Max Foreground FPS", min = 8, max = 200, step = 1 },
+    maxFPSBk = { name = "Max Background FPS", min = 8, max = 200, step = 1 },
+    targetFPS = { name = "Target FPS", min = 8, max = 200, step = 1 },
+}
+
+local additionalToggles = {
+    useMaxFPS = "Limit Foreground FPS",
+    useMaxFPSBk = "Limit Background FPS",
+    useTargetFPS = "Use Target FPS",
+}
+
+for _, profileType in ipairs({ "solo", "scenario", "group", "raid" }) do
+    local profileName = profileType
+    local args = RGS.options.args[profileType].args
+    args.updateSettingsButton.desc = profileType == "raid"
+        and "Capture Blizzard's Raid and Battleground graphics settings when that bank is enabled; otherwise capture Base. Shared Advanced settings are also captured."
+        or "Capture Blizzard's Base graphics settings and shared Advanced settings into this profile."
+    args.applySettingsButton = {
+        type = "execute", name = "Apply Settings Now", order = 1.5,
+        desc = "Apply this profile to its Blizzard graphics settings bank now.",
+        func = function() RGS:ApplyProfileSettings(profileName) end,
+    }
+    args.graphicsQuality = {
+        type = "range", name = "Graphics Quality Preset", order = 1.7,
+        desc = "Blizzard's overall quality preset. Individual quality controls below are applied after this preset.",
+        min = 1, max = 10, step = 1,
+        hidden = function() return RGS:GetCVarNumber("graphicsQuality") == nil end,
+        get = function()
+            local setting = RGS.settings[1]
+            local value = RGS.db.profile[profileName].graphicsQuality
+            if value == nil then value = RGS:GetCVarNumber(RGS:GetSettingCVar(setting, profileName)) or 0 end
+            return value + 1
+        end,
+        set = function(_, value) RGS.db.profile[profileName].graphicsQuality = value - 1 end,
+    }
+
+    for _, key in ipairs({ "viewDistance", "environmentDetail", "groundClutter" }) do
+        local sliderKey = key
+        local option = args[key]
+        option.min, option.max = 1, 10
+        option.get = function()
+            return (RGS.db.profile[profileName][sliderKey] or 0) + 1
+        end
+        option.set = function(_, value)
+            RGS.db.profile[profileName][sliderKey] = value - 1
+        end
+    end
+
+    -- Clients with the modern spell-visual system have three choices.
+    if C_VideoOptions and C_VideoOptions.IsSpellVisualDensitySystemSupported
+        and C_VideoOptions.IsSpellVisualDensitySystemSupported() then
+        args.spellDensity.values = { [0] = "Essential", [1] = "Reduced", [2] = "Full" }
+    end
+
+    for index, setting in ipairs(RGS.settings) do
+        local key = setting[1]
+        local settingInfo, settingKey = setting, key
+        local available = function() return not RGS:IsSettingAvailable(settingInfo) end
+        if args[key] then
+            args[key].hidden = available
+        elseif labels[key] then
+            args[key] = {
+                type = "select", name = labels[key].name, order = 16 + index,
+                values = labels[key].values, hidden = available,
+                get = function()
+                    return RGS.db.profile[profileName][settingKey] or RGS:GetCVarNumber(RGS:GetSettingCVar(settingInfo, profileName))
+                end,
+                set = function(_, value) RGS.db.profile[profileName][settingKey] = value end,
+            }
+        elseif additionalRanges[key] then
+            local spec = additionalRanges[key]
+            args[key] = {
+                type = "range", name = spec.name, order = 16 + index,
+                min = spec.min, max = spec.max, step = spec.step, hidden = available,
+                get = function()
+                    return RGS.db.profile[profileName][settingKey] or RGS:GetCVarNumber(RGS:GetSettingCVar(settingInfo, profileName)) or spec.min
+                end,
+                set = function(_, value) RGS.db.profile[profileName][settingKey] = value end,
+            }
+        elseif additionalToggles[key] then
+            args[key] = {
+                type = "toggle", name = additionalToggles[key], order = 16 + index,
+                hidden = available,
+                get = function()
+                    local value = RGS.db.profile[profileName][settingKey]
+                    if value == nil then value = RGS:GetCVarNumber(settingInfo[2]) end
+                    return value == 1
+                end,
+                set = function(_, value) RGS.db.profile[profileName][settingKey] = value and 1 or 0 end,
+            }
+        end
+    end
 end
